@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#201c24">
+<title>红线未断 · 董卓与吕布的乱世情书</title>
+<style>
+:root{color-scheme:light;--paper:#f2ece1;--ink:#302934;--muted:#82767a;--wine:#8c3545;--gold:#c09966;--serif:"Songti SC","Noto Serif SC","STSong","SimSun",serif;--sans:"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);background-image:radial-gradient(ellipse at 2% 0%,#dec4b74a,transparent 48%),radial-gradient(ellipse at 96% 15%,#e4d3c479,transparent 50%)}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #bb6579;outline-offset:5px}button{-webkit-tap-highlight-color:transparent}.page{max-width:1392px;margin:0 auto;padding:34px 42px 23px}.masthead{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:24px}.eyebrow{display:flex;align-items:center;gap:10px;color:var(--wine);font-size:10px;letter-spacing:3.2px;font-weight:600}.eyebrow:before{content:"";display:inline-block;width:23px;height:1px;background:var(--wine)}h1{font:500 clamp(31px,3.8vw,51px)/1.15 var(--serif);letter-spacing:7px;margin:13px 0 10px}.subtitle{font-size:12px;letter-spacing:1.1px;color:var(--muted);margin:0}.imprint{display:flex;align-items:center;gap:17px;flex-shrink:0;padding-bottom:4px}.imprint .small{font-size:10px;line-height:1.9;letter-spacing:2px;color:var(--muted);text-align:right}.seal{border:1.5px solid #9d4850;outline:1px solid #9d48504d;outline-offset:3px;width:43px;height:46px;padding:5px;color:#9d4850;font:17px/1 var(--serif);display:grid;grid-template-columns:1fr 1fr;align-items:center;transform:rotate(3deg)}
+.player{background:#211e27;border:1px solid #c7b7a6;border-radius:17px;overflow:hidden;box-shadow:0 17px 48px #3c25352b,0 2px 4px #3c25350a}.stage{position:relative;aspect-ratio:1440/820;isolation:isolate;overflow:hidden;background:#302735;touch-action:manipulation}.scene-svg{display:block;width:100%;height:100%}.chapter-hud{position:absolute;left:5.2%;top:5.6%;pointer-events:none;color:#f6e4cc;text-shadow:0 2px 12px #26172599}.chapter-kicker{font-size:clamp(8px,.85vw,11px);letter-spacing:3px;display:flex;align-items:center;gap:9px}.chapter-kicker:before{content:"";width:17px;height:1px;background:#d5b286}.chapter-hud h2{font:400 clamp(17px,2.65vw,33px)/1.2 var(--serif);letter-spacing:4px;margin:11px 0 8px}.chapter-note{font-size:clamp(8px,.86vw,11px);letter-spacing:2px;opacity:.67}.stage-index{position:absolute;right:4.8%;top:6%;font:12px var(--sans);color:#f4dfc396;letter-spacing:2px;pointer-events:none}.stage-index strong{font:500 29px var(--serif);color:#f7e8d7;margin-right:4px}.narration{position:absolute;left:0;right:0;bottom:0;min-height:20%;padding:4.4% 9% 3.0%;background:linear-gradient(transparent,#181a25c9);text-align:center;pointer-events:none;display:flex;flex-direction:column;justify-content:flex-end;color:#f4e5d0}.narration .ornament{color:#ddab9a;font-size:12px;letter-spacing:10px;margin-bottom:11px}.narration p{font:400 clamp(11px,1.42vw,18px)/1.75 var(--serif);letter-spacing:1.6px;margin:0;text-wrap:balance}.fullscreen-btn{position:absolute;right:2.1%;bottom:3.3%;width:32px;height:32px;border:1px solid #f4ddc137;border-radius:7px;color:#eee0cd;background:#28243170;display:grid;place-items:center;z-index:3}.fullscreen-btn:hover{background:#514052}.fullscreen-btn svg{width:15px;height:15px}.pause-indicator{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;opacity:0;transition:opacity .25s}.pause-indicator span{width:66px;height:66px;border:1px solid #f7e8d658;border-radius:50%;display:grid;place-items:center;background:#28213170;color:#f4e5cf;backdrop-filter:blur(5px)}.pause-indicator svg{width:23px;height:23px}.is-paused .pause-indicator{opacity:1}.controls{height:74px;padding:0 24px;display:flex;gap:21px;align-items:center;color:#e9dccd;border-top:1px solid #f4ddc114}.play{border:0;background:#ecdcc6;color:#38272c;font-size:12px;letter-spacing:1px;padding:11px 15px;border-radius:7px;display:flex;align-items:center;gap:9px;min-width:108px;justify-content:center}.play:hover{background:#fff0dc}.play svg{width:12px;height:14px}.restart{border:0;color:#c8bcae;background:none;padding:8px;display:flex;align-items:center;gap:7px;font-size:11px;white-space:nowrap}.restart svg{width:16px;height:16px}.restart:hover{color:#fff0dc}.scrubber{flex:1;min-width:40px;display:flex;align-items:center;gap:16px}.track{width:100%;accent-color:#d3949e;height:4px;cursor:pointer;margin:0;background:transparent}.clock{font-size:10px;white-space:nowrap;letter-spacing:1px;font-variant-numeric:tabular-nums;color:#b3a5a6}.clock b{color:#f0e1d0;font-weight:400}.speed-wrap{display:flex;align-items:center;gap:8px;color:#978a92;font-size:10px}.speed-wrap select{color:#e8d9cc;background:#302936;border:1px solid #5d4b5a;border-radius:5px;font-size:11px;padding:5px 7px;cursor:pointer}.chapters{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:17px}.chapter{padding:14px 13px 13px;text-align:left;border:1px solid #cabbae70;border-radius:8px;color:#7d7276;background:#f7f1e94d;position:relative;overflow:hidden;transition:background .2s,border-color .2s,transform .2s}.chapter:hover{transform:translateY(-2px);border-color:#b27b7d}.chapter.active{background:#e9ddd4;border-color:#9e6470;color:#6f3444}.chapter-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}.chapter-num{font-size:9px;letter-spacing:1.5px}.chapter-time{font-size:9px;opacity:.6;font-variant-numeric:tabular-nums}.chapter-title{font:500 15px var(--serif);letter-spacing:1.4px}.chapter-symbol{position:absolute;right:13px;bottom:10px;opacity:.33;font-size:13px}.chapter.active:after{content:"";position:absolute;left:0;bottom:0;height:2px;width:var(--chapter-progress,0%);background:#9a4b5a}.footer{display:flex;align-items:center;justify-content:space-between;gap:15px;color:#97888a;font-size:10px;letter-spacing:.8px;margin-top:19px;line-height:1.8}.footer em{font-style:normal;color:#8c5360}.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:#302633;color:#f3e7d6;padding:10px 18px;border-radius:8px;font-size:12px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}.toast.show{opacity:1}.player:fullscreen{border:0;border-radius:0;display:flex;flex-direction:column;justify-content:center;background:#17141b}.player:fullscreen .stage{width:100%;max-height:calc(100vh - 74px);aspect-ratio:1440/820}.player:fullscreen .controls{flex-shrink:0}.player:fullscreen .scene-svg{object-fit:contain}.svg-label{font-family:var(--serif);letter-spacing:5px}.speech{font-family:var(--serif);font-size:18px;letter-spacing:.4px;fill:#4f3441}.actor-outline{stroke:#2b2730;stroke-linejoin:round;stroke-linecap:round}.line-gold{fill:none;stroke:#cfa96f;stroke-width:2;stroke-linecap:round}.is-paused .scene-svg *{animation-play-state:paused!important}
+@media(min-width:1500px){.page{padding-top:46px}}@media(max-width:900px){.page{padding:24px 20px 18px}.controls{gap:13px;padding:0 15px}.chapters{gap:6px}.chapter{padding:12px 9px}.chapter-title{font-size:13px;letter-spacing:0}.chapter-symbol{display:none}.speed-wrap>span{display:none}.footer{font-size:9px}.narration .ornament{margin-bottom:6px;font-size:9px}.chapter-hud h2{margin:8px 0 5px}}@media(max-width:580px){.page{padding:22px 12px 17px}.masthead{gap:10px;margin-bottom:18px}.eyebrow{font-size:8px;letter-spacing:2px}h1{letter-spacing:4px;font-size:34px}.subtitle{font-size:9px;letter-spacing:.2px}.imprint .small{display:none}.seal{width:32px;height:35px;font-size:12px}.player{border-radius:10px}.controls{height:auto;min-height:100px;padding:13px 12px;flex-wrap:wrap;gap:12px}.play{min-width:99px;padding:9px 12px;font-size:11px}.restart{font-size:10px}.speed-wrap{margin-left:auto}.scrubber{order:4;flex-basis:100%;gap:12px}.clock{font-size:9px}.chapters{grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}.chapter{padding:10px 11px}.chapter-top{margin-bottom:6px}.chapter-title{font-size:13px;letter-spacing:1px}.chapter-time,.chapter-num{font-size:8px}.footer{display:block;margin-top:13px;font-size:9px}.footer span{display:block}.footer .keys{margin-top:4px}.chapter-hud{top:5%;left:5%}.chapter-kicker{font-size:6px;letter-spacing:1px}.chapter-hud h2{font-size:16px;letter-spacing:2px;margin:5px 0 3px}.chapter-note{font-size:6px;letter-spacing:1px}.stage-index{font-size:7px;letter-spacing:0;top:5%}.stage-index strong{font-size:17px}.narration{padding:4% 7% 2.7%;min-height:21%}.narration .ornament{font-size:6px;margin-bottom:4px;letter-spacing:5px}.narration p{font-size:9px;letter-spacing:.4px;line-height:1.6}.fullscreen-btn{width:23px;height:23px;right:1.9%;bottom:3%}.fullscreen-btn svg{width:11px;height:11px}.pause-indicator span{width:41px;height:41px}.pause-indicator svg{width:16px;height:16px}.player:fullscreen .stage{max-height:calc(100vh - 104px)}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.chapter,.pause-indicator{transition:none}}
+</style>
+</head>
+<body>
+<main class="page">
+  <header class="masthead">
+    <div><div class="eyebrow">乱世情书 · 卷零一</div><h1>红线未断</h1><p class="subtitle">董卓 × 吕布 · 一出没有写进史书的苦情戏</p></div>
+    <div class="imprint"><div class="small">山河无恙 · 有情皆苦<br>六折小戏 / 六十秒相思</div><div class="seal" aria-label="架空戏说"><span>架</span><span>空</span><span>戏</span><span>说</span></div></div>
+  </header>
+  <section class="player" id="player" aria-label="红线未断，SVG 动画播放器">
+    <div class="stage" id="stage">
+      <svg class="scene-svg" id="scene" viewBox="0 0 1440 820" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-title svg-desc">
+        <title id="svg-title">董卓与吕布：红线未断</title>
+        <desc id="svg-desc">架空爱情动画。董卓是身穿紫袍、戴黑冠的成年男子；吕布是身着铠甲、戴双翎冠的成年男子。两人相遇，共伞，系上红线，因乱世分离，最终在来生的梦中重逢。</desc>
+        <defs>
+          <linearGradient id="warmSky" x2="0" y2="1"><stop stop-color="#514252"/><stop offset=".55" stop-color="#bc8584"/><stop offset="1" stop-color="#d3aa91"/></linearGradient>
+          <linearGradient id="nightSky" x2="0" y2="1"><stop stop-color="#171f35"/><stop offset=".6" stop-color="#434660"/><stop offset="1" stop-color="#8c7a84"/></linearGradient>
+          <linearGradient id="mountainGrad" x2="0" y2="1"><stop stop-color="#6b5667"/><stop offset="1" stop-color="#a8797b"/></linearGradient>
+          <linearGradient id="terraceGrad" x2="0" y2="1"><stop stop-color="#887679"/><stop offset="1" stop-color="#34323e"/></linearGradient>
+          <linearGradient id="waterGrad" x2="0" y2="1"><stop stop-color="#a4a3b5"/><stop offset=".45" stop-color="#5c697f"/><stop offset="1" stop-color="#343c53"/></linearGradient>
+          <linearGradient id="robeGrad" x2="1" y2="1"><stop stop-color="#734453"/><stop offset=".55" stop-color="#4c3347"/><stop offset="1" stop-color="#302d41"/></linearGradient>
+          <linearGradient id="armorGrad" x2="1" y2="1"><stop stop-color="#a4917a"/><stop offset=".45" stop-color="#66787b"/><stop offset="1" stop-color="#414e5e"/></linearGradient>
+          <linearGradient id="capeGrad" x2="1" y2=".4"><stop stop-color="#682c40"/><stop offset="1" stop-color="#a74b57"/></linearGradient>
+          <linearGradient id="umbrellaGrad" x2="0" y2="1"><stop stop-color="#ac4b60"/><stop offset="1" stop-color="#632e49"/></linearGradient>
+          <radialGradient id="moonGlow"><stop stop-color="#ffefcb" stop-opacity=".30"/><stop offset="1" stop-color="#ffefcb" stop-opacity="0"/></radialGradient>
+          <radialGradient id="lanternGlow"><stop stop-color="#ffcc85" stop-opacity=".35"/><stop offset="1" stop-color="#e99670" stop-opacity="0"/></radialGradient>
+          <radialGradient id="vignette"><stop offset=".48" stop-color="#181521" stop-opacity="0"/><stop offset="1" stop-color="#181521" stop-opacity=".53"/></radialGradient>
+          <linearGradient id="fogGrad" x2="0" y2="1"><stop stop-color="#eed6d3" stop-opacity="0"/><stop offset=".64" stop-color="#e2c2c7" stop-opacity=".24"/><stop offset="1" stop-color="#e2c2c7" stop-opacity="0"/></linearGradient>
+          <filter id="paperGrain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" stitchTiles="stitch" seed="19"/><feColorMatrix type="saturate" values="0"/></filter>
+          <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+          <pattern id="floorTiles" width="160" height="65" patternUnits="userSpaceOnUse" patternTransform="skewX(-24)"><path d="M0 0H160M0 0V65M80 33H160" fill="none" stroke="#d7bdab" stroke-width="1" opacity=".14"/></pattern>
+          <pattern id="doorPattern" width="32" height="49" patternUnits="userSpaceOnUse"><circle cx="16" cy="23" r="3.3" fill="#9f7c5f"/><circle cx="15" cy="22" r="1.1" fill="#d8b38a"/></pattern>
+          <g id="petalShape"><path d="M-7 0Q-3-10 8-3Q8 5-2 7Q0 2-7 0" fill="#eab4b6"/><path d="M-2 5L5-2" stroke="#f7d5cc" stroke-width=".8" fill="none"/></g>
+          <g id="smallHeart"><path d="M0 8C-5 3-15-3-15-10C-15-20-4-23 0-14C4-23 15-20 15-10C15-3 5 3 0 8Z" fill="#df8c9c"/></g>
+          <g id="lanternArt"><circle r="62" cy="14" fill="url(#lanternGlow)"/><path d="M0-80V-23" stroke="#372b36" stroke-width="2"/><path d="M-14-20Q-34 8-13 37H13Q34 8 14-20Z" fill="#a6515f" stroke="#e5b47d" stroke-width="2"/><ellipse cy="8" rx="12" ry="27" fill="#e19a7a" opacity=".75"/><path d="M-16-20H16M-15 37H15M0 39V66M-6 52V69M6 52V69" stroke="#e6b880" stroke-width="3"/><path d="M-24 7H24" stroke="#f0b98a" stroke-width="1" opacity=".6"/></g>
+          <g id="duck"><ellipse cy="0" rx="24" ry="11" fill="#cfad86"/><path d="M-6 0Q-11-17 8-13Q17-6 9 3" fill="#8d5868"/><path d="M3-1Q-8-7-18 0Q-7 10 3-1" fill="#ece0b3"/><circle cx="18" cy="-15" r="10" fill="#d2aa7f"/><path d="M25-17L37-12L25-10" fill="#b87668"/><circle cx="21" cy="-17" r="1.7" fill="#35303d"/><path d="M-21-3L-35-11L-29 0" fill="#767b80"/></g>
+        </defs>
+        <!-- Scenery: every illustration is inline SVG. -->
+        <rect width="1440" height="820" fill="url(#warmSky)"/>
+        <rect id="nightWash" width="1440" height="820" fill="url(#nightSky)" opacity="0"/>
+        <g id="stars" opacity="0"></g>
+        <g id="moon" transform="translate(1148 146)"><circle r="125" fill="url(#moonGlow)"/><circle r="58" fill="#f3dbb7"/><path d="M-19-44Q-48-13-24 18Q-10 42 27 39A54 54 0 0 1-19-44" fill="#ead0ad" opacity=".75"/><circle cx="15" cy="-15" r="9" fill="#d9bf9e" opacity=".22"/><circle cx="-10" cy="19" r="15" fill="#d9bf9e" opacity=".18"/></g>
+        <g id="cloudA" opacity=".23" fill="#e7c8bb"><path d="M70 219Q114 204 150 214Q165 191 208 203Q236 208 248 222Q302 220 319 229H60Z"/><path d="M904 268Q929 253 974 260Q1008 238 1035 257Q1084 250 1107 274H884Z"/></g>
+        <g id="cloudB" opacity=".14" fill="#f7d9c1"><path d="M372 143Q426 126 463 141Q504 123 541 146Q591 136 626 151H366Z"/><path d="M1090 339Q1133 322 1172 332Q1205 311 1240 334Q1286 323 1325 346H1080Z"/></g>
+        <path d="M0 404L100 363L160 382L292 316L383 374L473 335L568 389L702 310L802 365L923 305L1030 377L1143 325L1280 395L1360 359L1440 392V656H0Z" fill="url(#mountainGrad)" opacity=".70"/>
+        <path d="M0 460L107 421L238 456L361 383L491 446L624 393L776 443L926 396L1067 439L1183 401L1355 448L1440 420V642H0Z" fill="#625467" opacity=".6"/>
+        <g id="palace" opacity=".86">
+          <g fill="#4b414f"><path d="M80 437H321V572H80ZM1080 422H1360V573H1080Z"/><path d="M54 444Q148 427 194 396Q239 428 343 444ZM1047 430Q1152 410 1212 376Q1262 413 1380 430Z"/><path d="M91 414L103 366H115L119 414M1260 408L1266 350H1278L1288 409"/></g>
+          <g transform="translate(720 0)"><path d="M-223 342H223V573H-223Z" fill="#55444e"/><path d="M-233 346Q-92 324 0 271Q94 326 233 346L245 329Q143 323 0 259Q-143 321-245 329Z" fill="#342d3d" stroke="#ae8a7e" stroke-width="2"/><path d="M-166 273Q-59 256 0 213Q61 257 166 273L177 256Q94 251 0 201Q-89 249-177 256Z" fill="#3c3344" stroke="#b99483" stroke-width="2"/><path d="M-135 273H135V306H-135Z" fill="#6b4c53"/><path d="M-133 282H133M-107 277V303M-62 277V303M-18 277V303M25 277V303M69 277V303M112 277V303" fill="none" stroke="#b8967d" stroke-width="3" opacity=".58"/><path d="M-224 359H224M-221 374H221" stroke="#ba967c" stroke-width="4" opacity=".7"/><path d="M-187 376V561M-96 376V561M96 376V561M187 376V561" stroke="#98636a" stroke-width="15"/><path d="M-163 394H-115V487H-163ZM115 394H163V487H115Z" fill="#c39a7a" opacity=".36"/><path d="M-145 394V487M-163 425H-115M-163 455H-115M139 394V487M115 425H163M115 455H163" stroke="#4b3e4a" stroke-width="4"/><path d="M-61 397Q0 370 61 397V570H-61Z" fill="#312f3e"/><path d="M0 390V572" stroke="#745461" stroke-width="2"/><path d="M-246 570H246L289 602H-289Z" fill="#9e8080"/><path d="M-265 583H265M-277 594H277" stroke="#655663" stroke-width="3"/></g>
+          <g stroke="#c39479" stroke-width="3" opacity=".22"><path d="M120 470H290M1110 464H1329M135 490V548M178 490V548M221 490V548M264 490V548M1128 481V549M1178 481V549M1228 481V549M1278 481V549"/></g>
+        </g>
+        <g id="terrace"><path d="M0 579H1440V820H0Z" fill="url(#terraceGrad)"/><rect y="593" width="1440" height="227" fill="url(#floorTiles)"/><path d="M0 581H1440M0 592H1440" stroke="#c2a693" stroke-width="3" opacity=".56"/><g fill="#756773" stroke="#b69a88" stroke-width="2"><path d="M0 533H260V550H0ZM1177 533H1440V550H1177Z"/><path d="M32 533V580H44V533M106 533V580H118V533M180 533V580H192V533M1250 533V580H1262V533M1325 533V580H1337V533M1400 533V580H1412V533"/></g></g>
+        <g id="riverWorld" opacity="0"><path d="M630 473Q747 441 823 484Q752 533 833 589Q860 648 1090 820H344Q616 645 635 585Q684 518 630 473Z" fill="url(#waterGrad)"/><path d="M0 576Q360 545 620 583L576 600L604 620L566 642L579 659L516 685Q343 720 0 723Z" fill="#545262"/><path d="M1440 570Q1126 548 843 583L872 601L849 625L885 640L878 665L945 685Q1130 711 1440 720Z" fill="#535161"/><path d="M0 577Q348 551 620 583M1440 572Q1132 553 843 583" fill="none" stroke="#b6a2a0" stroke-width="4"/><g id="waterRipples" fill="none" stroke="#e9d5c9" stroke-linecap="round" opacity=".32"></g><g stroke="#9f8d95" stroke-width="2" fill="none" opacity=".65"><path d="M518 640Q512 611 497 602M516 637Q501 620 480 619M526 642Q531 607 544 600M916 637Q920 606 939 596M917 631Q940 614 953 614"/></g></g>
+        <g id="dreamBridge" opacity="0"><path d="M278 610H1162V663H1066Q1003 616 941 663H836Q722 620 608 663H503Q438 616 375 663H278Z" fill="#8c808b" stroke="#c7b0a8" stroke-width="2"/><path d="M276 608H1164M283 566H1157" stroke="#ddc4b3" stroke-width="7"/><path d="M291 566V606M365 566V606M440 566V606M515 566V606M590 566V606M665 566V606M740 566V606M815 566V606M890 566V606M965 566V606M1040 566V606M1115 566V606" stroke="#c2a6a4" stroke-width="6"/><path d="M272 613H1170" stroke="#e9d2bb" stroke-width="3"/></g>
+        <g id="sideArchitecture" fill="#332b3c" stroke="#a07a72" stroke-width="2"><path d="M0 0H62V596H23V0M1378 0H1440V596H1400V0"/><path d="M0 74Q71 66 111 34L102 10Q77 31 0 41M1440 74Q1369 66 1329 34L1338 10Q1363 31 1440 41"/><path d="M19 572H76L89 609H8ZM1365 572H1424L1438 609H1351Z"/></g>
+        <g id="lanterns"><g id="lantern1" transform="translate(165 178)"><use href="#lanternArt"/></g><g id="lantern2" transform="translate(1275 183)"><use href="#lanternArt"/></g><g id="lantern3" transform="translate(344 80) scale(.65)"><use href="#lanternArt"/></g><g id="lantern4" transform="translate(1094 67) scale(.65)"><use href="#lanternArt"/></g><path d="M68 44Q272 116 481 0M985 0Q1202 101 1374 43" fill="none" stroke="#2d2736" stroke-width="2" opacity=".7"/></g>
+        <g id="branch" fill="none" stroke="#423240" stroke-linecap="round"><path d="M0 214Q94 175 225 225M51 196Q96 142 154 154M123 204Q169 181 205 178M175 216Q235 204 281 222" stroke-width="10"/><path d="M107 170L120 141M175 187L182 163M235 215L253 192M60 194L71 162" stroke-width="4"/><g fill="#ca8b98" stroke="none"><circle cx="121" cy="142" r="8"/><circle cx="133" cy="145" r="6"/><circle cx="153" cy="154" r="7"/><circle cx="179" cy="166" r="8"/><circle cx="193" cy="164" r="6"/><circle cx="208" cy="179" r="8"/><circle cx="252" cy="194" r="8"/><circle cx="267" cy="199" r="6"/><circle cx="282" cy="222" r="8"/><circle cx="227" cy="219" r="5"/><circle cx="70" cy="162" r="7"/></g></g>
+        <g id="backgroundPetals"></g>
+        <g id="rainBack" opacity="0" stroke="#d9d8e9" stroke-width="1.4" stroke-linecap="round"></g>
+        <g id="umbrella" opacity="0" transform="translate(710 222)"><path d="M0-101V232Q0 248 14 242" fill="none" stroke="#d5b283" stroke-width="7" stroke-linecap="round"/><path d="M-181 5Q-130-69-10-94Q0-104 10-94Q132-72 181 5Q157-9 137 10Q111-9 89 9Q66-11 43 7Q21-10 0 7Q-22-10-44 8Q-68-10-91 9Q-114-8-137 11Q-160-8-181 5Z" fill="url(#umbrellaGrad)" stroke="#e4b69a" stroke-width="3"/><path d="M0-94Q-105-57-137 9M0-94Q-67-52-90 8M0-94Q-32-44-44 7M0-94V7M0-94Q31-43 43 7M0-94Q72-50 89 9M0-94Q112-59 137 10" fill="none" stroke="#e6b393" stroke-width="1.5" opacity=".63"/><path d="M-155-16Q0-84 154-17" fill="none" stroke="#d6a286" stroke-width="2" opacity=".6"/><path d="M-3-100V-111" stroke="#d7b58b" stroke-width="6" stroke-linecap="round"/><path d="M-161 8V20M162 8V20" stroke="#dcb092" stroke-width="2"/></g>
+        <!-- The red thread uses the characters' actual animated hand coordinates. -->
+        <g id="threadGroup" fill="none" stroke-linecap="round"><path id="threadGlow" stroke="#f59ca8" stroke-width="7" opacity=".20" filter="url(#softGlow)"/><path id="threadMain" stroke="#e59aa8" stroke-width="2.8"/><path id="threadLeft" stroke="#e59aa8" stroke-width="2.8"/><path id="threadRight" stroke="#e59aa8" stroke-width="2.8"/></g>
+        <g id="gate" opacity="0"><path d="M614 166H826V619H614Z" fill="#2c2a39" stroke="#a98477" stroke-width="3"/><path d="M600 169Q718 144 840 169L849 155Q720 120 591 155Z" fill="#292635" stroke="#ad8877" stroke-width="2"/><g id="leftDoor"><path d="M624 178H719V609H624Z" fill="#4c3546"/><path d="M635 205H708V588H635Z" fill="url(#doorPattern)"/><circle cx="700" cy="409" r="10" fill="none" stroke="#aa8867" stroke-width="3"/></g><g id="rightDoor"><path d="M721 178H816V609H721Z" fill="#443345"/><path d="M732 205H805V588H732Z" fill="url(#doorPattern)"/><circle cx="740" cy="409" r="10" fill="none" stroke="#aa8867" stroke-width="3"/></g><path d="M720 180V608" stroke="#131e30" stroke-width="4"/><rect x="687" y="244" width="66" height="88" rx="2" fill="#ad937b" transform="rotate(-7 720 290)"/><text x="720" y="280" text-anchor="middle" fill="#61434b" font-family="serif" font-size="22" transform="rotate(-7 720 290)">世</text><text x="720" y="312" text-anchor="middle" fill="#61434b" font-family="serif" font-size="22" transform="rotate(-7 720 290)">议</text></g>
+        <!-- Dong Zhuo: dark crown, generous purple robe, full beard. -->
+        <g id="dong" transform="translate(310 604)">
+          <ellipse id="dShadow" cx="0" cy="4" rx="71" ry="11" fill="#202333" opacity=".29"/>
+          <g id="dArt" class="actor-outline" stroke-width="3">
+            <g id="dLegLeft"><path d="M-24-62L-26-13" stroke="#272736" stroke-width="28"/><path d="M-39-20Q-22-27-14-18L-8-2Q-13 6-46 2Z" fill="#262736"/><path d="M-44 1H-9" stroke="#c1a27a" stroke-width="2"/></g>
+            <g id="dLegRight"><path d="M24-61L25-14" stroke="#303043" stroke-width="27"/><path d="M13-20Q28-28 38-17L51-6Q58 4 17 3Z" fill="#292a38"/><path d="M18 2H51" stroke="#c1a27a" stroke-width="2"/></g>
+            <g id="dBackArm"><path id="dBackOutline" fill="none" stroke="#292633" stroke-width="40"/><path id="dBackFill" fill="none" stroke="#563c50" stroke-width="33"/><g id="dBackHand"><rect x="-13" y="-17" width="26" height="15" rx="3" fill="#b89367"/><ellipse rx="11" ry="10" fill="#dfaf8f" stroke-width="2"/></g></g>
+            <path d="M-43-179Q-80-143-74-86L-67-31Q0-8 71-32L66-92Q78-148 36-177Z" fill="url(#robeGrad)"/>
+            <path d="M-36-174L-5-129L32-175L50-159L5-111L-49-158Z" fill="#b28b66"/><path d="M-27-174L-3-143L23-175" fill="#e0ba88" stroke-width="2"/>
+            <path d="M-1-125L-11-38M32-108L46-43M-44-108L-51-49" fill="none" stroke="#ac7c78" stroke-width="2" opacity=".56"/>
+            <path d="M-70-87Q-1-64 69-87L68-68Q-1-48-69-68Z" fill="#b79367"/><rect x="-13" y="-79" width="27" height="22" rx="5" fill="#ddba82"/><path d="M-6-68L0-73L7-68L0-63Z" fill="#8e4557" stroke-width="1"/>
+            <path d="M16-62L29-19L40-25L32-65" fill="#803a52" stroke-width="2"/><path d="M-64-37Q0-18 66-38" fill="none" stroke="#be946d" stroke-width="3"/>
+            <g class="line-gold" opacity=".55"><path d="M-46-123q-14-9-10-20q10-8 16 4q1 9-9 10M37-117q17-9 14-20q-11-7-15 5q1 7 10 7M-37-48q-9-8-16-2M43-49q9-9 15-4"/></g>
+            <g id="dHead">
+              <path d="M-16-181V-195H20V-177Q4-162-16-181Z" fill="#d8a182"/>
+              <ellipse cx="1" cy="-221" rx="37" ry="40" fill="#e5b293"/>
+              <ellipse cx="-33" cy="-219" rx="9" ry="12" fill="#d8a083"/>
+              <path d="M-25-248Q-35-230-29-216L-37-218Q-44-244-27-256Z" fill="#292936"/>
+              <path d="M26-229L42-217Q43-211 28-212" fill="#e5b293" stroke-width="2"/>
+              <path d="M-32-251L-30-268Q-10-279 30-268L36-250Z" fill="#252939"/>
+              <path d="M-19-270L-17-288H16L24-269" fill="#2c2c3b"/>
+              <path d="M-32-261L-81-278L-89-265L-32-246M33-261L81-276L88-263L36-246" fill="#303041"/>
+              <path d="M-28-253H32" stroke="#bd986d" stroke-width="4"/><path d="M-5-260L4-267L13-260L4-253Z" fill="#aa5b65" stroke="#dbb782" stroke-width="2"/>
+              <g id="dEyes" transform="translate(0 -227)"><path d="M-16 0Q-10-5-3 0M12-1Q18-6 25-1" fill="none" stroke-width="3.5"/><circle cx="-8" cy="1" r="2.4" fill="#282735"/><circle cx="20" cy="0" r="2.4" fill="#282735"/></g>
+              <path id="dBrows" d="M-19-239Q-10-243-1-238M12-240Q23-244 30-238" fill="none" stroke-width="4.5"/>
+              <ellipse cx="-19" cy="-214" rx="10" ry="5" fill="#c9787c" opacity=".46" stroke="none"/><ellipse cx="27" cy="-208" rx="8" ry="4" fill="#c9787c" opacity=".42" stroke="none"/>
+              <g id="dBeard"><path d="M-28-210Q-16-198-7-202L5-196L18-201Q28-197 33-207Q34-173 7-158Q-20-169-28-210Z" fill="#2d2c38"/><path d="M-18-199Q-13-179 4-170M0-193L9-170M19-194L16-176" fill="none" stroke="#53505a" stroke-width="1.7"/></g>
+              <path d="M3-214Q-8-222-17-209Q-4-206 3-214M5-214Q20-223 30-211Q20-206 5-214" fill="#282936" stroke-width="1"/>
+              <path id="dMouth" d="M1-204Q13-197 25-205" fill="none" stroke="#eac0a0" stroke-width="2.5"/>
+              <path id="dTear" d="M-8-223Q-18-209-9-207Q-2-209-8-223Z" fill="#c0e4ed" stroke="none" opacity="0"/>
+            </g>
+            <g id="dFrontArm"><path id="dFrontOutline" fill="none" stroke="#292633" stroke-width="41"/><path id="dFrontFill" fill="none" stroke="#705063" stroke-width="34"/><g id="dFrontHand"><rect x="-14" y="-18" width="28" height="15" rx="3" fill="#cba474"/><path d="M-12-12H12" stroke="#725462" stroke-width="2"/><ellipse rx="11" ry="10" fill="#e5b293" stroke-width="2"/><path d="M-6 3Q0 6 7 2" fill="none" stroke="#b68075" stroke-width="1.5"/></g></g>
+          </g>
+          <g transform="translate(0 34)"><rect x="-40" y="-14" width="80" height="27" rx="13" fill="#2a2334" opacity=".65"/><text class="svg-label" x="3" y="5" text-anchor="middle" fill="#ead3b8" font-size="16">董卓</text></g>
+        </g>
+        <!-- Lü Bu: adult warrior, twin pheasant plumes, armor and halberd. -->
+        <g id="lu" transform="translate(1130 604)">
+          <ellipse id="lShadow" cx="0" cy="4" rx="62" ry="10" fill="#202333" opacity=".29"/>
+          <g id="lArt" transform="scale(-1 1)" class="actor-outline" stroke-width="3">
+            <path id="lCape" d="M-27-201Q-92-194-104-119L-134-36Q-76-24-40-67L-13-161Z" fill="url(#capeGrad)"/>
+            <g id="halberd" transform="translate(-66 -3) rotate(-10)"><path d="M0 0V-303" stroke="#b49b79" stroke-width="7"/><path d="M0-307L-12-284L-2-266L8-284Z" fill="#a8b4ac"/><path d="M1-267Q37-273 33-300Q52-276 39-253Q24-237 2-246" fill="#c0c2aa" stroke-width="2"/><path d="M0-266H17M0-249H15" stroke="#caa36a" stroke-width="5"/><path d="M-5-235Q-29-220-24-198Q-12-211 4-208" fill="#a1495c" stroke-width="1.5"/><path d="M-6-230Q-10-214-3-201" stroke="#d28c80" stroke-width="2" fill="none"/></g>
+            <g id="lLegLeft"><path d="M-20-69L-26-18" stroke="#393c4b" stroke-width="22"/><path d="M-38-40H-13L-16-14L-10-3Q-24 6-44 2L-39-17Z" fill="#444957"/><path d="M-38-39H-14M-39-28H-15M-41 2H-11" stroke="#b99b77" stroke-width="2"/></g>
+            <g id="lLegRight"><path d="M19-71L24-18" stroke="#353947" stroke-width="22"/><path d="M11-41H35L34-17L48-7Q55 4 13 3L12-18Z" fill="#454b58"/><path d="M13-39H35M13-29H35M15 2H47" stroke="#b99b77" stroke-width="2"/></g>
+            <g id="lBackArm"><path id="lBackOutline" fill="none" stroke="#292633" stroke-width="31"/><path id="lBackFill" fill="none" stroke="#69787b" stroke-width="25"/><g id="lBackHand"><rect x="-11" y="-20" width="22" height="18" rx="3" fill="#b1936d"/><ellipse rx="9" ry="9" fill="#e4b497" stroke-width="2"/></g></g>
+            <path d="M-32-204Q-46-173-40-122L-48-65Q-1-44 49-65L38-132Q45-176 28-205Z" fill="url(#armorGrad)"/>
+            <path d="M-26-207L2-179L28-207L35-186L3-158L-33-189Z" fill="#bda17a"/>
+            <path d="M-16-205L2-185L17-206" fill="#e2c599" stroke-width="2"/>
+            <g fill="none" stroke="#b7b5a0" stroke-width="2" opacity=".65"><path d="M-33-160Q0-145 33-160M-36-145Q0-130 36-145M-38-130Q0-115 38-130M-37-114Q0-100 38-114M-38-96Q0-82 40-96M-42-79Q0-63 43-79"/><path d="M-19-160L-19-146M0-153V-138M19-159V-145M-27-143V-128M-9-138V-123M10-137V-123M28-143V-128M-19-128V-112M0-123V-107M20-128V-112M-26-92V-76M-8-88V-71M11-88V-71M29-92V-76"/></g>
+            <path d="M-40-118Q0-105 40-118L40-105Q0-91-40-105Z" fill="#8c4756"/><rect x="-10" y="-113" width="22" height="19" rx="3" fill="#ceae79"/><path d="M-4-104L1-109L7-104L1-99Z" fill="#746879" stroke-width="1"/>
+            <path d="M-13-99L-21-48L-2-37L13-51L10-99" fill="#914755"/><path d="M-5-91L-7-50" stroke="#bf8676" stroke-width="2"/>
+            <path d="M-39-205Q-65-201-59-180Q-44-166-28-179L-22-193Z" fill="#86908c"/><path d="M29-206Q53-201 54-183Q39-168 24-180L19-194Z" fill="#acaa91"/><path d="M-56-188Q-42-187-33-196M29-193Q40-186 50-187" fill="none" stroke="#d7bd8b" stroke-width="2"/>
+            <g id="lHead"><path d="M-12-202V-222H20V-204Q2-189-12-202Z" fill="#d4a58a"/><path d="M-24-263Q-33-238-20-217Q-4-204 19-214Q36-230 32-256Z" fill="#e9bca0"/><ellipse cx="-26" cy="-243" rx="7" ry="10" fill="#d9a58c"/><path d="M24-249L38-240Q39-234 27-234" fill="#e9bca0" stroke-width="2"/><path d="M-23-254L-18-231L-27-224L-30-254Z" fill="#30313e"/>
+              <path d="M-28-261Q-31-277-17-287Q8-298 29-279L35-261L-1-253Z" fill="#a68f71"/><path d="M-27-264L1-258L32-267M-21-281L-9-272M20-283L12-273" fill="none" stroke="#e4c792" stroke-width="2"/><path d="M-9-276L1-290L11-276L1-263Z" fill="#914353" stroke="#e5c28a" stroke-width="2"/>
+              <g id="lPlumes" fill="none" stroke-linecap="round"><path d="M-7-283C-70-339-105-397-52-409C-19-416-4-374-26-352" stroke="#302d3b" stroke-width="9"/><path d="M11-282C35-365 78-402 94-377C106-356 78-325 57-320" stroke="#352e3e" stroke-width="9"/><path d="M-7-283C-70-339-105-397-52-409C-19-416-4-374-26-352" stroke="#b68280" stroke-width="3"/><path d="M11-282C35-365 78-402 94-377C106-356 78-325 57-320" stroke="#c29c89" stroke-width="3"/><path d="M-37-322L-49-320M-49-341L-63-339M-62-364L-77-362M-65-389L-79-388M-47-407L-48-417M-29-393L-19-398M-29-370L-19-374M29-330L39-325M40-355L53-348M58-379L68-370M82-389L87-378M89-366L100-362M70-337L80-331" stroke="#e4c091" stroke-width="2" opacity=".86"/></g>
+              <g id="lEyes" transform="translate(0 -245)"><path d="M-14 0L-2-1M12-1L24-3" fill="none" stroke-width="3"/><circle cx="-5" cy="1" r="2.2" fill="#2b2938"/><circle cx="22" cy="-1" r="2.2" fill="#2b2938"/></g><path id="lBrows" d="M-18-256L-2-253M11-254L28-260" fill="none" stroke-width="4"/>
+              <ellipse cx="-14" cy="-232" rx="8" ry="4" fill="#c97b82" opacity=".4" stroke="none"/><path id="lMouth" d="M3-226Q13-220 24-227" fill="none" stroke="#784a4b" stroke-width="2.2"/><path d="M4-215L9-209L15-216" fill="#3d303b" stroke-width="1.5"/><path id="lTear" d="M19-240Q10-227 19-225Q26-227 19-240Z" fill="#c0e4ed" stroke="none" opacity="0"/>
+            </g>
+            <g id="lFrontArm"><path id="lFrontOutline" fill="none" stroke="#292633" stroke-width="31"/><path id="lFrontFill" fill="none" stroke="#88968e" stroke-width="25"/><g id="lFrontHand"><rect x="-11" y="-23" width="22" height="21" rx="3" fill="#bda47b"/><path d="M-9-15H9M-9-8H9" stroke="#776d65" stroke-width="2"/><ellipse rx="10" ry="9" fill="#e9bca0" stroke-width="2"/></g></g>
+          </g>
+          <g transform="translate(0 34)"><rect x="-40" y="-14" width="80" height="27" rx="13" fill="#2a2334" opacity=".65"/><text class="svg-label" x="3" y="5" text-anchor="middle" fill="#ead3b8" font-size="16">吕布</text></g>
+        </g>
+        <g id="loveKnot" fill="none" stroke="#e9a0ad" stroke-width="2.5" opacity="0"><path d="M0 0C-30-19-29 9 0 0C27-23 31 9 0 0M0 0Q-14 14-12 30M0 0Q14 15 8 33"/><circle r="4" fill="#f4c2bd" stroke="none"/></g>
+        <g id="heart" opacity="0"><path d="M0 12C-9 3-31-8-31-24C-31-45-7-48 0-29C7-48 31-45 31-24C31-8 9 3 0 12Z" fill="#dc8b9c" fill-opacity=".16" stroke="#efb5b9" stroke-width="2.3"/><path d="M-19-28Q-16-35-10-31" fill="none" stroke="#f8d8c7" stroke-width="2" stroke-linecap="round"/></g>
+        <g id="heartBreak" opacity="0" fill="none" stroke="#eab1b5" stroke-width="2.2"><path id="heartHalfL" d="M-2 10C-13 0-32-10-30-25C-28-43-8-42 0-28L-7-17L0-9L-7 0Z"/><path id="heartHalfR" d="M2 10C13 0 32-10 30-25C28-43 8-42 0-28L-7-17L0-9L-7 0Z"/></g>
+        <g id="letter" opacity="0"><path d="M-30-18H30V19H-30Z" fill="#eee0c9" stroke="#ad8b7c" stroke-width="2"/><path d="M-30-18L0 4L30-18M-30 19L-8 0M30 19L8 0" fill="none" stroke="#c1a58e" stroke-width="1.5"/><circle r="5" cy="3" fill="#a34a5e"/><path d="M-48 3H-35M-58 11H-39" stroke="#e4cbb8" stroke-width="2" stroke-linecap="round" opacity=".7"/></g>
+        <g id="ducks" opacity="0"><g id="duckA"><use href="#duck"/></g><g id="duckB"><use href="#duck"/></g></g>
+        <g id="floatingHearts"></g>
+        <g id="foregroundPetals"></g>
+        <g id="rainFront" opacity="0" stroke="#dddceb" stroke-width="2" stroke-linecap="round"></g>
+        <g id="dBubble" opacity="0"><path d="M-8-14L0 0L13-14" fill="#f1dfcb"/><rect x="-133" y="-60" width="266" height="48" rx="16" fill="#f1dfcb" stroke="#e7b6a2" stroke-width="1.3"/><text id="dSpeech" class="speech" x="0" y="-29" text-anchor="middle">奉先，陪我看一会儿灯。</text></g>
+        <g id="lBubble" opacity="0"><path d="M-8-14L0 0L13-14" fill="#ede0d0"/><rect x="-139" y="-60" width="278" height="48" rx="16" fill="#ede0d0" stroke="#a9b9b5" stroke-width="1.3"/><text id="lSpeech" class="speech" x="0" y="-29" text-anchor="middle">好。今晚不谈天下。</text></g>
+        <g id="dreamFog" opacity="0"><rect y="150" width="1440" height="600" fill="url(#fogGrad)"/><path d="M-150 698Q250 610 650 686T1580 675" stroke="#ecd2cc" stroke-width="60" fill="none" opacity=".12"/><path d="M-150 752Q320 668 790 731T1630 713" stroke="#eddcd1" stroke-width="45" fill="none" opacity=".1"/></g>
+        <rect width="1440" height="820" fill="url(#vignette)" pointer-events="none"/>
+        <rect width="1440" height="820" filter="url(#paperGrain)" opacity=".045" style="mix-blend-mode:soft-light" pointer-events="none"/>
+        <rect id="lightning" width="1440" height="820" fill="#f1e7df" opacity="0" pointer-events="none"/>
+        <rect id="curtain" width="1440" height="820" fill="#272332" opacity=".95" pointer-events="none"/>
+        <path d="M30 41V28H69M1371 28H1410V67M30 742V779H69M1371 779H1410V742" fill="none" stroke="#e3c4a0" stroke-width="1.3" opacity=".5" pointer-events="none"/>
+      </svg>
+      <div class="chapter-hud"><div class="chapter-kicker" id="chapterKicker">第一折 · 灯下</div><h2 id="chapterTitle">一眼误终身</h2><div class="chapter-note" id="chapterNote">灯火可亲，眼前是心上人。</div></div>
+      <div class="stage-index"><strong id="sceneNumber">01</strong> / 06</div>
+      <div class="narration" id="narration"><div class="ornament">— · 红 线 未 断 · —</div><p id="narrationText">满城都怕董相国，只有奉先，为他放慢了脚步。</p></div>
+      <div class="pause-indicator" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4L21 12L7 20Z"/></svg></span></div>
+      <button class="fullscreen-btn" id="fullscreen" title="全屏观看" aria-label="全屏观看"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9V4H9M15 4H20V9M20 15V20H15M9 20H4V15"/></svg></button>
+    </div>
+    <div class="controls">
+      <button class="play" id="play" aria-label="暂停动画"><svg viewBox="0 0 12 14" aria-hidden="true" fill="currentColor"><path id="playIcon" d="M1 1H4V13H1ZM8 1H11V13H8Z"/></svg><span id="playText">暂停演出</span></button>
+      <button class="restart" id="restart" title="从第一折重新播放"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 9A8 8 0 1 1 4 16M4 3V9H10"/></svg>重新相逢</button>
+      <div class="scrubber"><input id="seek" class="track" type="range" min="0" max="60" step="0.01" value="0" aria-label="动画播放进度，单位为秒"><div class="clock"><b id="elapsed">00:00</b> / 01:00</div></div>
+      <label class="speed-wrap"><span>演绎速度</span><select id="speed" aria-label="播放速度"><option value="0.75">0.75×</option><option value="1" selected>1.0×</option><option value="1.5">1.5×</option><option value="2">2.0×</option></select></label>
+    </div>
+  </section>
+  <nav class="chapters" aria-label="选择故事章节">
+    <button class="chapter active" data-scene="0" aria-label="第一折：一眼误终身" aria-current="step"><div class="chapter-top"><span class="chapter-num">第一折</span><span class="chapter-time">00:00</span></div><div class="chapter-title">一眼误终身</div><span class="chapter-symbol">灯</span></button>
+    <button class="chapter" data-scene="1" aria-label="第二折：一伞遮风雨"><div class="chapter-top"><span class="chapter-num">第二折</span><span class="chapter-time">00:10</span></div><div class="chapter-title">一伞遮风雨</div><span class="chapter-symbol">伞</span></button>
+    <button class="chapter" data-scene="2" aria-label="第三折：红线系余生"><div class="chapter-top"><span class="chapter-num">第三折</span><span class="chapter-time">00:20</span></div><div class="chapter-title">红线系余生</div><span class="chapter-symbol">缘</span></button>
+    <button class="chapter" data-scene="3" aria-label="第四折：长安容不下"><div class="chapter-top"><span class="chapter-num">第四折</span><span class="chapter-time">00:30</span></div><div class="chapter-title">长安容不下</div><span class="chapter-symbol">劫</span></button>
+    <button class="chapter" data-scene="4" aria-label="第五折：隔岸寄相思"><div class="chapter-top"><span class="chapter-num">第五折</span><span class="chapter-time">00:40</span></div><div class="chapter-title">隔岸寄相思</div><span class="chapter-symbol">念</span></button>
+    <button class="chapter" data-scene="5" aria-label="第六折：来生是寻常"><div class="chapter-top"><span class="chapter-num">第六折</span><span class="chapter-time">00:50</span></div><div class="chapter-title">来生是寻常</div><span class="chapter-symbol">梦</span></button>
+  </nav>
+  <footer class="footer"><span><em>架空戏说，非历史叙述。</em> 愿有情人，不必等来生。</span><span class="keys">纯 SVG · 离线播放 · 空格 暂停 / ← → 快退快进 · 点击画面暂停</span></footer>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(() => {
+  'use strict';
+  // A single deterministic timeline drives actors, scenery and particles.
+  // There are no external images, fonts, libraries or network requests.
+  const $ = id => document.getElementById(id);
+  const NS = 'http://www.w3.org/2000/svg';
+  const DURATION = 60;
+  const TAU = Math.PI * 2;
+  const clamp = (v, lo = 0, hi = 1) => Math.min(hi, Math.max(lo, v));
+  const mix = (a, b, n) => a + (b - a) * n;
+  const ease = n => { n = clamp(n); return n * n * (3 - 2 * n); };
+  const ramp = (a, b, t) => ease((t - a) / (b - a));
+  const windowAt = (a, b, c, d, t) => ramp(a, b, t) * (1 - ramp(c, d, t));
+  const attr = (el, key, value) => el.setAttribute(key, String(value));
+  const opacity = (el, value) => attr(el, 'opacity', clamp(value).toFixed(3));
+  const fmt = t => '00:' + String(Math.floor(clamp(t, 0, 59))).padStart(2, '0');
+  const story = [
+    {k:'第一折 · 灯下',title:'一眼误终身',note:'灯火可亲，眼前是心上人。',line:'满城都怕董相国，只有奉先，为他放慢了脚步。',d:'奉先，陪我看一会儿灯。',l:'好。今晚不谈天下。'},
+    {k:'第二折 · 共伞',title:'一伞遮风雨',note:'伞偏了，心也偏了。',line:'雨落长安。他把伞偏过去，也把心偏了过去。',d:'伞都偏我这边了。',l:'你不淋雨，我就不冷。'},
+    {k:'第三折 · 定情',title:'红线系余生',note:'不许功名，只许白头。',line:'没有聘书，没有盛筵，只有一根舍不得解开的红线。',d:'这回，牵住就别松手。',l:'不为功名，只为与你白头。'},
+    {k:'第四折 · 离乱',title:'长安容不下',note:'城门一闭，相思无处可逃。',line:'不是他们不够相爱，是这乱世太窄，容不下相牵的手。',d:'奉先，别回头……',l:'这天下，我不要了！'},
+    {k:'第五折 · 山河',title:'隔岸寄相思',note:'见字如面，却再难见面。',line:'此后每一封信，都写着同一句话：今日风大，你可添衣？',d:'若长安再落雨……',l:'那把伞，我一直留着。'},
+    {k:'第六折 · 来生之梦',title:'来生是寻常',note:'这一世走散，下一世相逢。',line:'若有来生，不做相国，不做将军，只做一双寻常鸳鸯。',d:'来生，还认得我吗？',l:'认得。先认你的眼睛。'}
+  ];
+  const el = {};
+  ['player','stage','nightWash','moon','cloudA','cloudB','palace','terrace','riverWorld','dreamBridge','sideArchitecture','lanterns','branch','rainBack','rainFront','umbrella','threadMain','threadGlow','threadLeft','threadRight','gate','leftDoor','rightDoor','dong','lu','dLegLeft','dLegRight','lLegLeft','lLegRight','dHead','lHead','dBeard','dEyes','lEyes','dBrows','lBrows','dMouth','lMouth','dTear','lTear','lCape','lPlumes','halberd','loveKnot','heart','heartBreak','heartHalfL','heartHalfR','letter','ducks','duckA','duckB','dBubble','lBubble','dSpeech','lSpeech','dreamFog','lightning','curtain','chapterKicker','chapterTitle','chapterNote','sceneNumber','narration','narrationText','seek','elapsed','play','playIcon','playText','speed','stars'].forEach(id => el[id] = $(id));
+  const chapterButtons = Array.from(document.querySelectorAll('.chapter'));
+  const arms = {};
+  ['dBack','dFront','lBack','lFront'].forEach(id => arms[id] = {outline:$(id+'Outline'),fill:$(id+'Fill'),hand:$(id+'Hand')});
+  const create = (tag, properties, parent) => {
+    const node = document.createElementNS(NS, tag);
+    Object.entries(properties).forEach(([key,value]) => attr(node,key,value));
+    parent.appendChild(node); return node;
+  };
+  // Seeded particle placement makes seeking and chapter selection reproducible.
+  let seed = 97126;
+  const random = () => { seed = (Math.imul(seed,1664525) + 1013904223) >>> 0; return seed / 4294967296; };
+  const petals = [];
+  for(let i=0;i<43;i++) {
+    const foreground = i < 14;
+    const node = create('use',{href:'#petalShape'},$(foreground?'foregroundPetals':'backgroundPetals'));
+    petals.push({node,x:random()*1660-100,y:random()*950-90,v:19+random()*37,drift:25+random()*28,scale:(foreground?.75:.4)+random()*.6,phase:random()*TAU,foreground});
+  }
+  const rain = [];
+  for(let i=0;i<108;i++) {
+    const front = i < 24;
+    const node = create('line',{opacity:(front?.27:.15)+random()*.20},$(front?'rainFront':'rainBack'));
+    rain.push({node,x:random()*1800,y:random()*1050,speed:420+random()*320,length:front?25+random()*18:14+random()*14});
+  }
+  const stars = [];
+  for(let i=0;i<46;i++) {
+    stars.push({node:create('circle',{cx:80+random()*1280,cy:32+random()*345,r:.7+random()*1.2,fill:'#f4e4cf'},el.stars),phase:random()*TAU});
+  }
+  const ripples = [];
+  for(let i=0;i<17;i++) {
+    const y=494+i*17, w=12+i*3+random()*26;
+    ripples.push({node:create('path',{d:`M${720-w} ${y}h${w*2}`},$('waterRipples')),phase:random()*TAU,width:w,y});
+  }
+  const hearts = [];
+  for(let i=0;i<7;i++) hearts.push({node:create('use',{href:'#smallHeart'},$('floatingHearts')),phase:i/7,offset:(random()-.5)*185});
+  const positions = [
+    [0,310,1130],[5.3,550,893],[9.7,570,868],[12.2,610,820],[19.8,610,820],
+    [22.5,610,819],[29.5,610,819],[31.1,615,817],[33,610,828],[37.3,407,1048],
+    [39.8,410,1041],[42,406,1044],[49.8,415,1035],[50.4,415,1035],[55.5,610,820],[60,610,820]
+  ];
+  function positionAt(t) {
+    for(let i=1;i<positions.length;i++) {
+      if(t<=positions[i][0]) {
+        const a=positions[i-1],b=positions[i],n=ease((t-a[0])/(b[0]-a[0]));
+        return {d:mix(a[1],b[1],n),l:mix(a[2],b[2],n)};
+      }
+    }
+    return {d:610,l:820};
+  }
+  function arm(id,sx,sy,hx,hy,upper,lower,bend=1) {
+    const a=arms[id],dx=hx-sx,dy=hy-sy,dist=Math.max(.001,Math.hypot(dx,dy));
+    const reach=clamp(dist,Math.abs(upper-lower)+.01,upper+lower-.01);
+    const direction=Math.atan2(dy,dx);
+    const joint=Math.acos(clamp((upper*upper+reach*reach-lower*lower)/(2*upper*reach),-1,1));
+    const ex=sx+Math.cos(direction+bend*joint)*upper,ey=sy+Math.sin(direction+bend*joint)*upper;
+    const x=sx+dx*reach/dist,y=sy+dy*reach/dist;
+    const path=`M${sx} ${sy}L${ex.toFixed(2)} ${ey.toFixed(2)}L${x.toFixed(2)} ${y.toFixed(2)}`;
+    attr(a.outline,'d',path);attr(a.fill,'d',path);
+    attr(a.hand,'transform',`translate(${x} ${y}) rotate(${Math.atan2(y-ey,x-ex)*180/Math.PI-90})`);
+    return {x,y};
+  }
+  let time=0,rate=1,currentScene=-1,lastStamp=null;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let playing=!reduced;
+  if(reduced) time=6;
+  function setPlaying(value) {
+    playing=value; lastStamp=null;
+    el.player.classList.toggle('is-paused',!playing);
+    el.playText.textContent=playing?'暂停演出':'继续演出';
+    el.play.setAttribute('aria-label',playing?'暂停动画':'播放动画');
+    attr(el.playIcon,'d',playing?'M1 1H4V13H1ZM8 1H11V13H8Z':'M2 1L11 7L2 13Z');
+  }
+  function setScene(index) {
+    if(index===currentScene) return;
+    currentScene=index;
+    const s=story[index];
+    el.chapterKicker.textContent=s.k;el.chapterTitle.textContent=s.title;el.chapterNote.textContent=s.note;
+    el.narrationText.textContent=s.line;el.dSpeech.textContent=s.d;el.lSpeech.textContent=s.l;
+    el.sceneNumber.textContent=String(index+1).padStart(2,'0');
+    chapterButtons.forEach((b,i)=>{b.classList.toggle('active',i===index);if(i===index)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+  }
+  function render(t) {
+    const index=Math.min(5,Math.floor(t/10)),local=t-index*10;
+    setScene(index);
+    const p=positionAt(t),prev=positionAt(Math.max(0,t-.06)),next=positionAt(Math.min(60,t+.06));
+    const walkD=clamp(Math.abs(next.d-prev.d)/7),walkL=clamp(Math.abs(next.l-prev.l)/7);
+    const breath=Math.sin(t*2.05),step=Math.sin(t*9.2);
+    const dY=604-Math.abs(step)*walkD*5+breath*.7;
+    const lY=604-Math.abs(Math.sin(t*9.2+.65))*walkL*5+Math.sin(t*2.1+.4)*.7;
+    const rainSoft=windowAt(9.8,11.8,18.7,20.6,t);
+    const storm=windowAt(29.6,31.5,38.7,41,t);
+    const separated=windowAt(39,41.2,50.1,52.9,t);
+    const dream=ramp(50,53.8,t);
+    const love=Math.max(windowAt(9.9,12.2,29.2,32,t),ramp(52.3,55.5,t));
+    const vow=windowAt(20.2,22.3,28.8,30.4,t);
+    const sorrow=windowAt(30.7,32.6,50.2,53.8,t);
+    const pulling=windowAt(31.2,33.3,38.7,41,t);
+    const cut=windowAt(33.7,34.7,50.7,53.5,t);
+    const night=Math.max(storm*.9,separated*.86,dream*.86,rainSoft*.38);
+    opacity(el.nightWash,night);opacity(el.stars,(separated*.6+dream)*.85);
+    opacity(el.palace,1-Math.max(separated*.91,dream*.87));
+    opacity(el.terrace,1-Math.max(separated,dream));opacity(el.riverWorld,Math.max(separated,dream));
+    opacity(el.dreamBridge,dream);opacity(el.sideArchitecture,1-dream*.8);opacity(el.lanterns,1-Math.max(storm*.55,separated*.83,dream*.94));
+    opacity(el.branch,1-storm*.55);opacity(el.rainBack,Math.max(rainSoft*.6,storm*.83));opacity(el.rainFront,Math.max(rainSoft*.45,storm*.8));
+    attr(el.moon,'transform',`translate(${mix(1148,720,dream)} ${mix(146,183,dream)}) scale(${mix(1,1.58,dream)})`);opacity(el.moon,1-storm*.76-rainSoft*.20);
+    attr(el.cloudA,'transform',`translate(${Math.sin(t*.08)*25} 0)`);attr(el.cloudB,'transform',`translate(${-Math.sin(t*.1)*34} 0)`);
+    [1,2,3,4].forEach((n,i)=>{const coords=[[165,178,1],[1275,183,1],[344,80,.65],[1094,67,.65]][i];attr($('lantern'+n),'transform',`translate(${coords[0]} ${coords[1]}) rotate(${Math.sin(t*1.35+i)*((storm*5)+2.3)}) scale(${coords[2]})`);});
+    opacity(el.umbrella,rainSoft);
+    attr(el.umbrella,'transform',`translate(710 ${222+Math.sin(t*2)*1.7}) rotate(${-5+Math.sin(t*1.15)*1.6})`);
+    opacity(el.gate,windowAt(31,33.5,39,41,t));
+    const doorOpen=(1-ramp(31,34,t))*42;
+    attr(el.leftDoor,'transform',`translate(${-doorOpen} 0)`);attr(el.rightDoor,'transform',`translate(${doorOpen} 0)`);
+    // Fully articulated shoulders, elbows, wrists and walking legs.
+    attr(el.dong,'transform',`translate(${p.d} ${dY})`);attr(el.lu,'transform',`translate(${p.l} ${lY})`);
+    attr(el.dLegLeft,'transform',`rotate(${step*walkD*23} -23 -59)`);attr(el.dLegRight,'transform',`rotate(${-step*walkD*23} 23 -59)`);
+    attr(el.lLegLeft,'transform',`rotate(${-Math.sin(t*9.2+.65)*walkL*24} -21 -62)`);attr(el.lLegRight,'transform',`rotate(${Math.sin(t*9.2+.65)*walkL*24} 22 -62)`);
+    attr(el.dHead,'transform',`rotate(${Math.sin(t*1.5)*.7+love*2-sorrow*3.3} 0 -182)`);
+    attr(el.lHead,'transform',`rotate(${Math.sin(t*1.4+.6)*.8+love*2.1-sorrow*3} 0 -207)`);
+    attr(el.dBeard,'transform',`rotate(${Math.sin(t*2)*1.3+storm*3} 0 -203)`);
+    attr(el.lPlumes,'transform',`rotate(${Math.sin(t*1.8)*2+Math.sin(t*3.7)*storm*3} 2 -281)`);
+    const wind=Math.sin(t*2.7)*(5+storm*13)+walkL*17;
+    attr(el.lCape,'d',`M-27-201Q${-92-wind}-194 ${-104-wind}-119L${-134-wind*1.5}-36Q${-76-wind*.7}-24-40-67L-13-161Z`);
+    opacity(el.halberd,1-Math.max(rainSoft,vow,dream)*.96);
+    const blinkPhase=t%4.7,blink=blinkPhase>4.44?Math.max(.08,Math.abs(blinkPhase-4.57)/.13):1;
+    const blinkPhaseL=(t+.9)%5.3,blinkL=blinkPhaseL>5.04?Math.max(.08,Math.abs(blinkPhaseL-5.17)/.13):1;
+    attr(el.dEyes,'transform',`translate(0 -227) scale(1 ${blink})`);attr(el.lEyes,'transform',`translate(0 -245) scale(1 ${blinkL})`);
+    attr(el.dBrows,'d',`M-19 ${mix(-239,-236,sorrow)}Q-10 ${mix(-243,-245,sorrow)}-1 ${mix(-238,-244,sorrow)}M12 ${mix(-240,-244,sorrow)}Q23 ${mix(-244,-246,sorrow)}30 ${mix(-238,-236,sorrow)}`);
+    attr(el.lBrows,'d',`M-18 ${mix(-256,-254,sorrow)}L-2 ${mix(-253,-259,sorrow)}M11 ${mix(-254,-260,sorrow)}L28 ${mix(-260,-254,sorrow)}`);
+    attr(el.dMouth,'d',`M1-204Q13 ${mix(-197,-213,sorrow)}25-205`);attr(el.lMouth,'d',`M3-226Q13 ${mix(-220,-232,sorrow)}24-227`);
+    opacity(el.dTear,separated*(.5+.5*Math.sin(t*2)**2));opacity(el.lTear,separated*(.5+.5*Math.cos(t*1.8)**2));
+    attr(el.dTear,'transform',`translate(0 ${(t*.55%1)*7})`);attr(el.lTear,'transform',`translate(0 ${((t*.55+.35)%1)*7})`);
+    arm('dBack',-41,-165,-64+step*walkD*10,-112-Math.cos(t*9.2)*walkD*8,42,39,-1);
+    arm('lBack',-34,-190,mix(-57,82,rainSoft),mix(-132,-180,rainSoft)+step*walkL*8,60,62,-1);
+    const dh=arm('dFront',40,-164,mix(mix(70,103,love),121,pulling),mix(-112,-141,Math.max(love,pulling)) + Math.sin(t*2.1)*1.4,51,48,1);
+    const lh=arm('lFront',32,-189,mix(mix(69,109,love),128,pulling),mix(-129,-141,Math.max(love,pulling)) + Math.sin(t*2.1)*1.4,58,56,1);
+    const a={x:p.d+dh.x,y:dY+dh.y},b={x:p.l-lh.x,y:lY+lh.y};
+    const midX=(a.x+b.x)/2,midY=(a.y+b.y)/2,span=Math.abs(b.x-a.x);
+    const bond=ramp(4,7,t),sag=12+span*(.19-pulling*.15)+Math.sin(t*2.3)*3;
+    const thread=`M${a.x} ${a.y}C${mix(a.x,b.x,.3)} ${a.y+sag} ${mix(a.x,b.x,.7)} ${b.y+sag} ${b.x} ${b.y}`;
+    attr(el.threadMain,'d',thread);attr(el.threadGlow,'d',thread);
+    opacity(el.threadMain,bond*(1-cut));opacity(el.threadGlow,bond*(1-cut)*.24);
+    const tail=Math.min(150,span*.35),flutter=Math.sin(t*3.1)*8;
+    attr(el.threadLeft,'d',`M${a.x} ${a.y}Q${a.x+tail*.6} ${a.y+36+flutter} ${a.x+tail} ${a.y+18+flutter}`);
+    attr(el.threadRight,'d',`M${b.x} ${b.y}Q${b.x-tail*.6} ${b.y+32-flutter} ${b.x-tail} ${b.y+21-flutter}`);
+    opacity(el.threadLeft,cut);opacity(el.threadRight,cut);
+    attr(el.loveKnot,'transform',`translate(${midX} ${midY+4}) scale(${.75+vow*.25})`);opacity(el.loveKnot,love*(1-cut));
+    attr(el.heart,'transform',`translate(${midX} ${midY-47-Math.sin(t*2)*4}) scale(${.84+vow*.2+Math.sin(t*2.8)*.04})`);opacity(el.heart,love*(1-cut)*.92);
+    attr(el.heartBreak,'transform',`translate(${midX} ${midY-72})`);opacity(el.heartBreak,windowAt(32.7,33.5,35.1,36.3,t));
+    attr(el.heartHalfL,'transform',`translate(${-cut*20} ${cut*8}) rotate(${-cut*13})`);attr(el.heartHalfR,'transform',`translate(${cut*20} ${cut*10}) rotate(${cut*13})`);
+    const letterProgress=clamp((t-42.5)/5.5),letterArc=Math.sin(letterProgress*Math.PI);
+    attr(el.letter,'transform',`translate(${mix(493,950,letterProgress)} ${390-letterArc*87+Math.sin(t*4)*4}) rotate(${Math.sin(t*2.4)*9})`);opacity(el.letter,windowAt(42,43.3,47.9,49.2,t));
+    opacity(el.ducks,Math.max(separated*.45,dream*.82));attr(el.duckA,'transform',`translate(${711+Math.sin(t*.24)*35} ${706+Math.sin(t*1.6)*2}) scale(.79)`);attr(el.duckB,'transform',`translate(${775+Math.sin(t*.24-.7)*35} ${727+Math.sin(t*1.6+.6)*2}) scale(.72)`);
+    // Dialogue alternates, so the pair can be read without visual clutter.
+    const dSpeak=windowAt(.9,1.5,4.6,5.2,local),lSpeak=windowAt(5,5.6,8.7,9.4,local);
+    attr(el.dBubble,'transform',`translate(${p.d-29} ${dY-303-(1-dSpeak)*6})`);opacity(el.dBubble,dSpeak);
+    attr(el.lBubble,'transform',`translate(${p.l+33} ${lY-309-(1-lSpeak)*6})`);opacity(el.lBubble,lSpeak);
+    opacity(el.dreamFog,dream*.83);attr(el.dreamFog,'transform',`translate(${Math.sin(t*.12)*18} 0)`);
+    // One gentle wash signals the split; no rapid strobing.
+    opacity(el.lightning,windowAt(33.55,33.78,33.86,34.3,t)*.14);
+    opacity(el.curtain,Math.max(1-ramp(0,1.2,t),ramp(59.05,60,t))*.97);
+    petals.forEach(o=>{
+      const x=((o.x+t*o.drift*(1+storm*.7)+180)%1770)-165;
+      const y=((o.y+t*o.v+100)%1070)-100;
+      const s=o.scale*(.8+Math.abs(Math.sin(t*1.3+o.phase))*.3);
+      attr(o.node,'transform',`translate(${x+Math.sin(t+o.phase)*18} ${y}) rotate(${t*32+o.phase*70}) scale(${s} ${s*(.35+.65*Math.abs(Math.cos(t*1.1+o.phase)))})`);
+      opacity(o.node,(o.foreground?.65:.38)*(1-storm*.5)*(1-rainSoft*.35));
+    });
+    rain.forEach(o=>{
+      const y=((o.y+t*o.speed)%1060)-120;
+      const x=((o.x-t*(110+storm*145))%1810+1810)%1810-185;
+      attr(o.node,'x1',x);attr(o.node,'y1',y);attr(o.node,'x2',x-5-storm*10);attr(o.node,'y2',y+o.length);
+    });
+    stars.forEach(o=>opacity(o.node,.40+.45*(.5+.5*Math.sin(t*.85+o.phase))));
+    ripples.forEach(o=>{const dx=Math.sin(t*1.1+o.phase)*12;attr(o.node,'transform',`translate(${dx} 0) scale(1 1)`);opacity(o.node,.18+Math.sin(t*.8+o.phase)**2*.48);});
+    hearts.forEach(o=>{const progress=(t*.17+o.phase)%1;attr(o.node,'transform',`translate(${720+o.offset+Math.sin(t+o.phase*7)*13} ${440-progress*220}) scale(${.23+progress*.23})`);opacity(o.node,(Math.sin(progress*Math.PI)**2)*Math.max(vow*.55,dream*.58));});
+    el.narration.style.opacity=(ramp(.05,.7,local)*(1-ramp(9.4,10,local))).toFixed(3);
+    el.seek.value=t.toFixed(2);el.elapsed.textContent=fmt(t);
+    el.seek.setAttribute('aria-valuetext',`${Math.floor(t)}秒，共60秒；${story[index].title}`);
+    chapterButtons[index].style.setProperty('--chapter-progress',`${local*10}%`);
+  }
+  function seekTo(value) {time=clamp(Number(value)||0,0,DURATION-.001);lastStamp=null;render(time);}
+  function toggle(){setPlaying(!playing);}
+  el.play.addEventListener('click',toggle);
+  el.stage.addEventListener('click',event=>{if(!event.target.closest('button'))toggle();});
+  $('restart').addEventListener('click',()=>{seekTo(0);setPlaying(true);});
+  el.seek.addEventListener('input',event=>seekTo(event.target.value));
+  el.speed.addEventListener('change',event=>{rate=Number(event.target.value)||1;lastStamp=null;});
+  chapterButtons.forEach(button=>button.addEventListener('click',()=>{seekTo(Number(button.dataset.scene)*10+1.3);}));
+  document.addEventListener('keydown',event=>{
+    if(event.ctrlKey||event.altKey||event.metaKey) return;
+    const tag=document.activeElement?.tagName;
+    if(['INPUT','SELECT','TEXTAREA','BUTTON'].includes(tag))return;
+    if(event.code==='Space'){event.preventDefault();toggle();}
+    else if(event.code==='ArrowLeft'){event.preventDefault();seekTo(time-5);}
+    else if(event.code==='ArrowRight'){event.preventDefault();seekTo(time+5);}
+    else if(event.code==='Home'){event.preventDefault();seekTo(0);}
+  });
+  let toastTimer;
+  function toast(message){const node=$('toast');node.textContent=message;node.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove('show'),2800);}
+  $('fullscreen').addEventListener('click',async event=>{
+    event.stopPropagation();
+    try{
+      if(document.fullscreenElement){await document.exitFullscreen();}
+      else if(el.player.requestFullscreen){await el.player.requestFullscreen();}
+      else{toast('此浏览器不支持页面全屏，可使用浏览器全屏模式。');}
+    }catch(error){toast('未能进入全屏，请使用浏览器的全屏功能。');}
+  });
+  document.addEventListener('visibilitychange',()=>{lastStamp=null;});
+  function tick(stamp){
+    if(lastStamp===null)lastStamp=stamp;
+    const dt=Math.min((stamp-lastStamp)/1000,.1);lastStamp=stamp;
+    if(playing&&!document.hidden){time=(time+dt*rate)%DURATION;render(time);}
+    requestAnimationFrame(tick);
+  }
+  setPlaying(playing);render(time);requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

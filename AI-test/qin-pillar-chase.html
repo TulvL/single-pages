@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f4f0e5">
+<title>秦始皇绕柱 · SVG 殿前小剧场</title>
+<style>
+  :root{--paper:#f4f0e5;--ink:#283e37;--muted:#7c8475;--red:#ad4e39;--line:#dcd9ca;--gold:#b99b58;--white:#fffdf6}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;-webkit-font-smoothing:antialiased}
+  button,input{font:inherit} button{-webkit-tap-highlight-color:transparent}
+  button:focus-visible,input:focus-visible{outline:3px solid #c48e48;outline-offset:5px}
+  .page{width:min(1160px,calc(100% - 64px));margin:0 auto;padding:43px 0 26px}
+  .masthead{display:flex;align-items:center;justify-content:space-between;padding-bottom:17px;border-bottom:1px solid var(--line);gap:18px}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:3px}
+  .eyebrow i{display:inline-block;width:7px;height:7px;background:var(--red);transform:rotate(45deg)}
+  .edition{color:var(--muted);font-size:11px;letter-spacing:2px}
+  header{display:flex;align-items:center;justify-content:space-between;padding:29px 0 26px;gap:24px}
+  h1{margin:0;font-family:"STKaiti","KaiTi","Songti SC","SimSun",serif;font-size:clamp(32px,4.5vw,55px);font-weight:700;letter-spacing:5px;line-height:1.25}
+  h1 span{color:var(--red)}
+  .subtitle{margin:12px 0 0;font-size:13px;letter-spacing:1px;color:#767d6e;line-height:1.8}
+  .seal{flex-shrink:0;border:2px solid var(--red);outline:1px solid var(--red);outline-offset:-6px;border-radius:5px;color:var(--red);font-family:"STKaiti","KaiTi",serif;font-size:20px;line-height:1.25;padding:12px 15px;transform:rotate(7deg);opacity:.9}
+  .theatre{overflow:hidden;border:1px solid #d8d5c5;border-radius:19px;background:#f9f6ec;box-shadow:0 16px 46px -32px #4f4b3670}
+  .stage{position:relative;isolation:isolate;overflow:hidden}
+  .scene{width:100%;height:auto;display:block;aspect-ratio:12/7}
+  .scene text{font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+  .stage-top{position:absolute;z-index:2;top:21px;left:24px;right:24px;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+  .live{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:1.5px;color:#72806c}
+  .live-dot{width:6px;height:6px;background:#6d8262;border-radius:50%;box-shadow:0 0 0 4px #6d826210}
+  .live.is-paused .live-dot{background:#b2996d;box-shadow:0 0 0 4px #b2996d10}
+  .lap{display:flex;gap:8px;align-items:center;font-size:11px;color:#657464;font-variant-numeric:tabular-nums;letter-spacing:1px}
+  .lap svg{width:32px;height:32px;transform:rotate(-90deg)}
+  .lap strong{font-size:15px;font-weight:600;color:var(--ink)}
+  .controls{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 25px;background:#fbf9f1;border-top:1px solid var(--line)}
+  .actions{display:flex;align-items:center;gap:10px}
+  .btn{border:1px solid var(--line);border-radius:9px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 15px;min-height:43px;background:transparent;color:#51604f;font-size:12px;white-space:nowrap;cursor:pointer;transition:background .15s,transform .15s,border-color .15s}
+  .btn svg{width:16px;height:16px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .btn:hover{background:#ececde;border-color:#c2c5b3}
+  .btn:active{transform:translateY(1px)}
+  .btn.primary{background:var(--ink);color:#f7f5e8;border-color:var(--ink);min-width:117px}
+  .btn.primary:hover{background:#3b5448}
+  .btn.cheer{color:var(--red);border-color:#dcc4b3;background:#f6ebe0}
+  .btn.cheer:hover{background:#efded0;border-color:#caa991}
+  .speed{display:flex;align-items:center;gap:13px;min-width:225px}
+  .speed label{font-size:12px;white-space:nowrap;color:#7e8374}
+  .speed input{width:119px;accent-color:var(--ink);height:18px;cursor:pointer;margin:0}
+  .speed output{font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink);width:40px;text-align:right}
+  footer{display:flex;justify-content:space-between;gap:16px;color:#909384;font-size:11px;line-height:1.8;padding-top:17px;letter-spacing:.3px}
+  kbd{font-family:inherit;font-size:10px;border:1px solid #dcdacc;border-radius:4px;padding:2px 5px;background:#f8f5ed;color:#7a8272}
+  .footer-note{white-space:nowrap}
+  .ink{stroke:#354138;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .no-stroke{stroke:none}
+  @media(min-width:1500px){.page{padding-top:55px}}
+  @media(max-width:780px){.page{width:calc(100% - 32px);padding-top:22px}.edition{font-size:10px;letter-spacing:1px}.eyebrow{font-size:11px;letter-spacing:2px}header{padding:24px 0}.subtitle{font-size:12px}.seal{font-size:16px;padding:10px 13px}.controls{flex-wrap:wrap;gap:17px;padding:17px}.speed{flex:1;justify-content:flex-end}.stage-top{left:17px;right:17px;top:13px}footer{flex-wrap:wrap;gap:4px}.scene{min-height:280px;object-fit:cover}}
+  @media(max-width:480px){.page{width:calc(100% - 22px)}.edition{display:none}h1{letter-spacing:2px}.subtitle{font-size:11px;letter-spacing:0}.seal{font-size:14px;padding:9px 11px}.theatre{border-radius:13px}.stage{padding-top:27px}.stage-top{top:10px}.scene{min-height:0;aspect-ratio:12/7}.lap svg{height:23px;width:23px}.lap{font-size:10px}.lap strong{font-size:12px}.live{font-size:10px}.controls{padding:14px 12px;gap:14px}.actions{width:100%;gap:7px}.btn{flex:1;padding:11px 8px;font-size:11px;gap:5px}.btn.primary{min-width:0}.speed{justify-content:space-between;width:100%;gap:10px}.speed input{flex:1;margin:0 7px}.speed output{width:43px}footer{font-size:10px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="masthead"><div class="eyebrow"><i aria-hidden="true"></i>殿前小剧场 <span style="opacity:.35">/</span> 第一幕</div><div class="edition">纯 SVG 绘制 · 无限循环</div></div>
+  <header>
+    <div><h1>秦始皇<span>绕柱</span></h1><p class="subtitle">一根柱子，两位选手。剑还没拔出来，走位已经很熟练。</p></div>
+    <div class="seal" aria-hidden="true">走位<br>艺术</div>
+  </header>
+  <section class="theatre" aria-label="秦始皇绕柱动画与控制">
+    <div class="stage">
+      <div class="stage-top">
+        <div id="live" class="live"><span class="live-dot"></span><span id="statusText">追逐进行中</span></div>
+        <div class="lap"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="14" fill="none" stroke="#dedecf" stroke-width="2"/><circle id="lapProgress" cx="18" cy="18" r="14" fill="none" stroke="#9f6950" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 87.965"/></svg><span>第 <strong id="lapCount">01</strong> 圈</span></div>
+      </div>
+      <svg class="scene" id="scene" viewBox="0 0 1200 700" role="img" aria-labelledby="sceneTitle sceneDescription" xmlns="http://www.w3.org/2000/svg">
+        <title id="sceneTitle">秦始皇绕柱：二维 SVG 追逐小剧场</title>
+        <desc id="sceneDescription">咸阳宫中，戴冕冠、穿红袍的秦王绕着朱红大柱奔跑；身穿浅色衣服的荆轲持匕首在后追赶。两人会绕到柱后被遮挡，再从柱前跑过。殿旁群臣围观。</desc>
+        <defs>
+          <linearGradient id="wallWash" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f6f2e5"/><stop offset="1" stop-color="#e8e7d7"/></linearGradient>
+          <linearGradient id="floorWash" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#e1e2d1"/><stop offset="1" stop-color="#f2efe2"/></linearGradient>
+          <linearGradient id="pillarPaint" x1="0" x2="1"><stop stop-color="#943f32"/><stop offset=".3" stop-color="#b95943"/><stop offset=".62" stop-color="#be624b"/><stop offset="1" stop-color="#863d31"/></linearGradient>
+          <linearGradient id="stonePaint" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#c9cbbb"/><stop offset="1" stop-color="#afb7a5"/></linearGradient>
+          <pattern id="wallPattern" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M9 18h18M18 9v18" stroke="#849174" opacity=".055" stroke-width="1"/></pattern>
+          <pattern id="beamPattern" width="48" height="18" patternUnits="userSpaceOnUse"><path d="M2 14V4h16v10h12V4h16" fill="none" stroke="#c1b58a" stroke-width="2" opacity=".55"/></pattern>
+          <g id="cloud" fill="none" stroke="#9ca489" stroke-width="2" stroke-linecap="round" opacity=".4"><path d="M-41 5h66c25 0 22-20 9-20-7 0-10 5-9 10M-25 5c-20 0-19-23-5-23 7 0 11 5 10 11M-18-12c0-22 30-24 34-4"/><path d="M-19 16h51M-34 16h7"/></g>
+          <g id="screenPanel"><rect x="0" y="0" width="124" height="186" rx="3" fill="#c8cebb" stroke="#aeb99f" stroke-width="3"/><rect x="10" y="10" width="104" height="166" fill="#d7dcc9" stroke="#aeb99f" stroke-width="1"/><path d="M31 10v166M62 10v166M93 10v166M10 39h104M10 75h104M10 111h104M10 147h104" stroke="#aab89d" stroke-width="2"/><path d="M10 39L62 10l52 29-52 36ZM10 111l52-36 52 36-52 36ZM10 176l52-29 52 29" fill="none" stroke="#b8c4aa" stroke-width="2"/></g>
+          <g id="courtier" stroke="#6f7d69" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="0" cy="0" rx="27" ry="5" fill="#7a8967" opacity=".12" stroke="none"/>
+            <path d="M-12-17l-3 16h13l2-15M6-17L5-1h17l-5-18" fill="#5e6e60"/>
+            <path d="M-12-73q-13 11-14 36L-33-13q30 13 61 0l-6-25-7-33" fill="#a1b19a"/>
+            <path d="M-8-74L1-46l10-28M1-46v35" fill="none" stroke="#e0e4cc" stroke-width="3"/>
+            <path d="M-15-64l-23 16 15 19 16-17M14-65l20 19-19 18-12-17" fill="#b7c4aa"/>
+            <path d="M-20-42l16-7 14 7" fill="none" stroke="#e6d3ad" stroke-width="8"/>
+            <rect x="-12" y="-99" width="25" height="28" rx="10" fill="#ddcda9"/>
+            <path d="M-15-99v-10h31v10M-8-110v-8h15v8" fill="#5f7063"/>
+            <path d="M-5-89h1m9 0h1M-2-79q4 3 7-1M-2-71l4 9 5-9" fill="none"/>
+          </g>
+          <g id="bracket" fill="#6a7d66" stroke="#50634f" stroke-width="2"><path d="M-35 0h70v14H23v13H10v15h-20V27h-13V14h-12Z"/><path d="M-27 8h54M-14 20h28" stroke="#b7b990"/></g>
+        </defs>
+        <!-- 宫殿背景 -->
+        <rect width="1200" height="700" fill="#f6f3e8"/>
+        <path d="M72 106H1128V387H72Z" fill="url(#wallWash)"/>
+        <path d="M72 106H1128V387H72Z" fill="url(#wallPattern)"/>
+        <path d="M0 379Q600 363 1200 379V700H0Z" fill="url(#floorWash)"/>
+        <path d="M75 358H1125v25H75Z" fill="#c3cbb5"/>
+        <path d="M61 381H1139v13H61Z" fill="#b6c0a9"/>
+        <path d="M62 394H1138" stroke="#eef0df" stroke-width="3"/>
+        <g opacity=".57"><use href="#screenPanel" x="257" y="164"/><use href="#screenPanel" x="819" y="164"/></g>
+        <g fill="none" stroke="#c4c9af" opacity=".5"><circle cx="600" cy="240" r="80" stroke-width="3"/><circle cx="600" cy="240" r="67" stroke-width="1"/><path d="M541 228q20-46 58-29t58 16M549 257q21 26 54 3t47-10M564 279q18-15 43-8" stroke-width="5"/></g>
+        <g opacity=".65"><use href="#cloud" transform="translate(442 212) scale(.7)"/><use href="#cloud" transform="translate(749 274) scale(.6)"/></g>
+        <path d="M93 117h83v37q-16 54-20 124l-37 25-26-12Z" fill="#c7bda0" opacity=".63"/>
+        <path d="M1107 117h-83v37q16 54 20 124l37 25 26-12Z" fill="#c7bda0" opacity=".63"/>
+        <path d="M105 132l23 149M145 136l-4 129M1094 132l-23 149M1055 136l4 129" fill="none" stroke="#b6ad8e" opacity=".55" stroke-width="3"/>
+        <path d="M111 291l48-13M1089 291l-48-13" stroke="#9c906d" stroke-width="5"/>
+        <g fill="#819176" stroke="#697d62" stroke-width="2"><path d="M187 121h29v247h-29Z"/><path d="M984 121h29v247h-29Z"/></g>
+        <g fill="#b6bea7" stroke="#a1ad91" stroke-width="2"><path d="M176 361h51v21h-51Z"/><path d="M973 361h51v21h-51Z"/></g>
+        <path d="M68 89q532-27 1064 0v30H68Z" fill="#536b57"/>
+        <path d="M68 114H1132v20H68Z" fill="#76876b"/>
+        <path d="M78 116H1122v15H78Z" fill="url(#beamPattern)"/>
+        <path d="M69 91q531-25 1062 0" fill="none" stroke="#a2aa85" stroke-width="4"/>
+        <use href="#bracket" transform="translate(201 130)"/><use href="#bracket" transform="translate(999 130)"/>
+        <g fill="none" stroke="#9ba98c" stroke-width="1" opacity=".23"><path d="M0 451H1200M0 529H1200M0 631H1200M185 393L-52 700M392 393L270 700M600 393V700M808 393L930 700M1015 393l237 307"/></g>
+        <g fill="#9eaa91" opacity=".35"><circle cx="90" cy="438" r="2"/><circle cx="1125" cy="586" r="2"/><circle cx="138" cy="599" r="1.7"/><circle cx="1056" cy="440" r="1.7"/></g>
+        <!-- 群臣：保持在追逐路线之后 -->
+        <g opacity=".88"><use href="#courtier" transform="translate(243 391) scale(.87)"/><use href="#courtier" transform="translate(297 373) scale(.73)"/><use href="#courtier" transform="translate(902 373) scale(.73)"/><use href="#courtier" transform="translate(957 391) scale(.87)"/></g>
+        <g id="crowdCheer" opacity="0" pointer-events="none"><path d="M155 222q0-11 11-11h139q11 0 11 11v26q0 11-11 11h-44l-15 13 3-13h-83q-11 0-11-11Z" fill="#fffaf0" stroke="#c3c6ae" stroke-width="1.5"/><text x="236" y="242" text-anchor="middle" fill="#617451" font-size="17" font-weight="600">王，负剑！</text><path d="M979 252l9-14M995 268l15-5M216 281l-10-13" stroke="#bda56c" stroke-width="3" stroke-linecap="round"/></g>
+        <!-- 椭圆轨迹、扬尘与地面投影 -->
+        <ellipse cx="600" cy="486" rx="280" ry="77" fill="none" stroke="#a9b292" stroke-dasharray="3 10" stroke-width="1.5" opacity=".43"/>
+        <path d="M821 532l-3 9 13-2M377 443l3-9-13 2" fill="none" stroke="#a1ad8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/>
+        <g id="dustLayer" fill="#bcae88" pointer-events="none"></g>
+        <g id="shadows" fill="#788265"><ellipse id="kingShadow" cx="787" cy="547" rx="30" ry="8" opacity=".17"/><ellipse id="assassinShadow" cx="878" cy="480" rx="29" ry="7" opacity=".16"/></g>
+        <!-- 后景人物层：人物会被中间的柱子自然遮挡 -->
+        <g id="rearActors">
+          <g id="assassin" transform="translate(878 477) scale(.88)">
+            <g id="assassinFacing"><g id="assassinBob" class="ink">
+              <path id="assassinRibbon" d="M-10-145Q-38-135-57-151L-50-142Q-33-127-12-139" fill="#e7e8d6" stroke="#85927c" stroke-width="1.4"/>
+              <path id="assassinBackArm" d="M-13-108Q-34-86-44-98" fill="none" stroke="#b9c2b0" stroke-width="16"/>
+              <circle id="assassinBackHand" cx="-44" cy="-98" r="5.7" fill="#dfc5a0"/>
+              <path id="assassinLegBack" d="M-10-49Q-20-29-29-5" fill="none" stroke="#4a6357" stroke-width="12"/>
+              <path id="assassinBootBack" d="M-6-5q7-3 12 1l12 5q4 5-4 5H-7Z" fill="#374d43" transform="translate(-29 -5)"/>
+              <path id="assassinLegFront" d="M8-49Q25-23 27-5" fill="none" stroke="#536b5d" stroke-width="12"/>
+              <path id="assassinBootFront" d="M-6-5q7-3 12 1l12 5q4 5-4 5H-7Z" fill="#374d43" transform="translate(27 -5)"/>
+              <g id="assassinSkirt"><path d="M-19-80h38l18 37q-38 11-70-1Z" fill="#dfe3d2"/><path d="M-8-78l-9 34M8-76l11 34" stroke="#b4beaa" fill="none"/><path d="M-30-44q31 9 62 1" fill="none" stroke="#a7b59c" stroke-width="5"/></g>
+              <path d="M-13-117l-11 14 4 28q19 10 39 0l3-30-12-12Z" fill="#e9eadb"/>
+              <path d="M-11-116L7-91l6-25M7-91L-4-77" fill="none" stroke="#a2b39b" stroke-width="5"/>
+              <path d="M-22-82q23 7 43-1l-1 9q-19 6-40 0Z" fill="#526b5b"/>
+              <path d="M1-77l-2 29 10 2-3-28" fill="#657e69"/>
+              <g id="assassinHead">
+                <path d="M-9-150q-14-13-6-19 12-10 20 1l-3 16" fill="#344b42"/>
+                <circle cx="-8" cy="-162" r="5" fill="#526355"/>
+                <path d="M-13-148q17-11 27 6l1 7 9 5-8 4q-3 12-16 11l-12-9Z" fill="#e4c8a0"/>
+                <path d="M-13-133q-9 0-7-9 1-6 7-3" fill="#d5b48e"/>
+                <path d="M-15-142l-2-8q7-15 23-6l7 7-21 4 1 14-6-3Z" fill="#344b42"/>
+                <path d="M-18-150q16-8 34 3l-1 6q-18-10-33-3Z" fill="#edf0df" stroke="#83977e" stroke-width="1.4"/>
+                <path d="M6-136l8 2" fill="none" stroke-width="2.4"/><circle cx="12" cy="-132" r="1.7" fill="#34453b" stroke="none"/>
+                <path d="M8-122l8-1M-5-119l3 7 5-5" fill="none" stroke-width="1.7"/>
+              </g>
+              <path id="assassinFrontArm" d="M15-106Q34-88 49-96" fill="none" stroke="#e6e8d6" stroke-width="17"/>
+              <circle id="assassinFrontHand" cx="49" cy="-96" r="6" fill="#e4c8a0"/>
+              <g id="assassinWeapon" transform="translate(49 -96) rotate(-13)">
+                <path d="M5-3H19v6H5Z" fill="#847552"/>
+                <path d="M10-3v6M15-3v6" stroke="#b8a37a" stroke-width="1"/>
+                <path d="M20-8V8" stroke="#8c895f" stroke-width="4"/>
+                <path d="M23-5L57 0 23 5Z" fill="#e6eeea" stroke="#7e9690" stroke-width="1.7"/>
+                <path d="M24 0h27" stroke="#adc0b7" stroke-width="1"/>
+                <path id="daggerGlint" d="M48-8v9M43-4h10" stroke="#ffffff" stroke-width="2" opacity=".7"/>
+              </g>
+            </g></g>
+          </g>
+        </g>
+        <!-- 柱体层：后景人物在它之后，前景人物在它之前 -->
+        <g id="pillar">
+          <ellipse cx="606" cy="508" rx="107" ry="25" fill="#778468" opacity=".16"/>
+          <path d="M525 498l19-19h112l19 19v14q-76 24-150 0Z" fill="url(#stonePaint)" stroke="#8f9e88" stroke-width="2"/>
+          <ellipse cx="600" cy="497" rx="75" ry="19" fill="#ced1be" stroke="#98a58c" stroke-width="2"/>
+          <path d="M537 504q63 20 126 0" fill="none" stroke="#e0e1d0" stroke-width="2"/>
+          <ellipse cx="600" cy="482" rx="47" ry="15" fill="#7f4838" stroke="#784333" stroke-width="2"/>
+          <path d="M562 145h76v333q-38 24-76 0Z" fill="url(#pillarPaint)" stroke="#833d30" stroke-width="2"/>
+          <path d="M574 176v267" fill="none" stroke="#d38560" opacity=".45" stroke-width="3"/>
+          <path d="M629 176v267" fill="none" stroke="#6e342e" opacity=".32" stroke-width="3"/>
+          <path d="M561 170q39 13 78 0v11q-39 13-78 0Z" fill="#c3a065" stroke="#9a773e" stroke-width="1.6"/>
+          <path d="M561 452q39 15 78 0v13q-39 15-78 0Z" fill="#c3a065" stroke="#9a773e" stroke-width="1.6"/>
+          <path d="M562 476q38 17 76 0v6q-38 19-76 0Z" fill="#9b704a"/>
+          <g fill="none" stroke="#e5b272" stroke-width="1.4" opacity=".3"><path d="M580 216q20-16 40 0-20 17-40 0Zm0 183q20-16 40 0-20 17-40 0Z"/><path d="M587 218l13-15 13 15M587 397l13 15 13-15"/></g>
+          <rect x="585" y="265" width="30" height="76" rx="3" fill="#77382c" stroke="#bc9258" stroke-width="1.5"/>
+          <text x="600" y="294" text-anchor="middle" font-size="18" fill="#d2ab6e" style="font-family:KaiTi,STKaiti,serif"><tspan x="600">承</tspan><tspan x="600" dy="26">天</tspan></text>
+          <path d="M550 144h100v16q-50 18-100 0Z" fill="#bfa069" stroke="#8c784e" stroke-width="2"/>
+          <path d="M535 121q65-18 130 0l-12 22q-53 15-106 0Z" fill="#73846a" stroke="#526a53" stroke-width="2"/>
+          <path d="M544 118v-12h112v12q-56 14-112 0Z" fill="#a7ae84" stroke="#697e60" stroke-width="2"/>
+          <path d="M547 127q53 12 106 0M557 144v10m17-7v11m17-9v11m17-11v11m17-13v11m17-13v9" fill="none" stroke="#d1bd86" stroke-width="2"/>
+        </g>
+        <!-- 前景人物层 -->
+        <g id="frontActors">
+          <g id="king" transform="translate(771 547)">
+            <g id="kingFacing" transform="scale(-1 1)"><g id="kingBob" class="ink">
+              <path id="kingCape" d="M-15-118C-42-112-52-91-84-99Q-70-57-26-45L3-83Z" fill="#923c32"/>
+              <path id="kingCapeTrim" d="M-80-96Q-66-61-28-50" fill="none" stroke="#c6a164" stroke-width="3"/>
+              <path id="kingBackArm" d="M-12-108Q-31-91-42-100" fill="none" stroke="#993f32" stroke-width="18"/>
+              <circle id="kingBackHand" cx="-42" cy="-100" r="5.6" fill="#e7c598"/>
+              <path id="kingLegBack" d="M-10-48Q-22-22-25-5" fill="none" stroke="#6b3f34" stroke-width="12"/>
+              <path id="kingBootBack" d="M-6-5q7-3 12 1l12 5q4 5-4 5H-7Z" fill="#34443a" transform="translate(-25 -5)"/>
+              <path id="kingLegFront" d="M8-48Q22-25 24-5" fill="none" stroke="#7b4938" stroke-width="12"/>
+              <path id="kingBootFront" d="M-6-5q7-3 12 1l12 5q4 5-4 5H-7Z" fill="#34443a" transform="translate(24 -5)"/>
+              <g id="kingSkirt"><path d="M-21-83h41l19 42q-34 14-73-1Z" fill="#b3513b"/><path d="M-8-80l-8 37M9-81l14 38" fill="none" stroke="#90392f" stroke-width="2.4"/><path d="M-31-44q33 11 66 1" fill="none" stroke="#d0ad68" stroke-width="5"/><path d="M-1-73l1 32" fill="none" stroke="#d3a762" stroke-width="2"/></g>
+              <path d="M-12-119l-14 17 7 29q23 9 40-2l2-29-13-15Z" fill="#b04b37"/>
+              <path d="M-13-117L5-91l8-26M5-91L-3-76" fill="none" stroke="#d7ae67" stroke-width="5"/>
+              <path d="M-22-81q22 6 44-1v9q-22 8-44 0Z" fill="#354a3c"/>
+              <rect x="-3" y="-82" width="11" height="11" rx="2" fill="#c5a163" stroke="#d5b879" stroke-width="1.5"/>
+              <g id="kingSword" transform="translate(-26 -78) rotate(24)">
+                <g id="kingBlade"><path d="M-3-1V64l3 9 3-9V-1Z" fill="#d8e2d8" stroke="#7f9183" stroke-width="1.4"/><rect x="-3.5" y="-25" width="7" height="24" rx="2" fill="#c6a162"/><path d="M-3-20h6m-6 6h6m-6 6h6" stroke="#89703e" stroke-width="1.4"/><path d="M-11-2h22" stroke="#d9b875" stroke-width="4" stroke-linecap="round"/><circle cx="0" cy="-26" r="4" fill="#c6a162"/></g>
+                <path d="M-5 2H5v65L0 76l-5-9Z" fill="#334d42" stroke="#284035" stroke-width="2"/>
+                <path d="M-5 8H5M-5 56H5M-3 68H3" stroke="#c5a365" stroke-width="4"/>
+              </g>
+              <g id="kingHead">
+                <path d="M-12-148q18-13 27 8l1 6 9 5-9 4q-2 11-16 10l-13-11Z" fill="#edcb9d"/>
+                <path d="M-12-135q-9 2-8-7 1-6 8-4" fill="#dcb287"/>
+                <path d="M-15-139l-1-10q4-13 16-13 13 0 17 14l-27 1v14Z" fill="#303e36"/>
+                <path d="M6-139l9-3" fill="none" stroke-width="2"/><ellipse cx="12" cy="-135" rx="1.8" ry="2.2" fill="#344238" stroke="none"/>
+                <path d="M6-126q5-5 10 0M-3-119l3 12 7-5 5-10" fill="#344238" stroke-width="1.4"/>
+                <path d="M11-125l5 2" stroke="#fff0d0" stroke-width="2"/>
+                <path d="M-15-153v-9h29v10Z" fill="#3b4c3f" stroke="#d0ad67" stroke-width="1.5"/>
+                <path d="M-25-165l37-5 17 9-39 6Z" fill="#354539" stroke="#caa762" stroke-width="2"/>
+                <g id="kingTassels" fill="#d9b774" stroke="#b5904f" stroke-width="1.1"><path d="M15-158v19M22-160v18M-21-163v15" fill="none"/><circle cx="15" cy="-152" r="1.8"/><circle cx="15" cy="-145" r="1.8"/><circle cx="15" cy="-139" r="2"/><circle cx="22" cy="-154" r="1.8"/><circle cx="22" cy="-148" r="1.8"/><circle cx="22" cy="-142" r="2"/><circle cx="-21" cy="-154" r="1.8"/><circle cx="-21" cy="-148" r="2"/></g>
+                <path id="kingSweat" d="M31-150q-7 8-3 11 7 3 3-11Z" fill="#98b9b6" stroke="#6c9996" stroke-width="1"/>
+              </g>
+              <path id="kingFrontArm" d="M14-107Q30-84 45-93" fill="none" stroke="#bc5b42" stroke-width="18"/>
+              <circle id="kingFrontHand" cx="45" cy="-93" r="6" fill="#edcb9d"/>
+            </g></g>
+          </g>
+        </g>
+        <!-- 名牌及对白保持正向，不随角色左右翻转 -->
+        <g id="nameLabels" font-size="12" letter-spacing="2" text-anchor="middle" pointer-events="none"><g id="kingLabel"><rect x="-27" y="-11" width="54" height="21" rx="10.5" fill="#f4e9d9" opacity=".94"/><text y="4" fill="#984c37">秦王</text></g><g id="assassinLabel"><rect x="-27" y="-11" width="54" height="21" rx="10.5" fill="#e6eadb" opacity=".94"/><text y="4" fill="#596f59">荆轲</text></g></g>
+        <g id="talkBubble" opacity="0" pointer-events="none"><path d="M-81-43H81q10 0 10 10v24Q91 1 81 1H8L-1 12-9 1H-81q-10 0-10-10v-24q0-10 10-10Z" fill="#fffbee" stroke="#c5bba1" stroke-width="1.4"/><text id="bubbleText" x="0" y="-16" text-anchor="middle" font-size="16" font-weight="500" fill="#685c42">剑怎么这么长！</text></g>
+        <g opacity=".48" fill="#7c866e" font-size="11" letter-spacing="4"><text x="49" y="654">咸阳宫 · 殿前</text><text x="1151" y="654" text-anchor="end">绕柱有术，拔剑待定</text></g>
+        <path d="M28 614v56h55M1172 614v56h-55" fill="none" stroke="#bcc2aa" stroke-width="1.3" opacity=".6"/>
+      </svg>
+    </div>
+    <div class="controls">
+      <div class="actions">
+        <button class="btn primary" id="toggleBtn" type="button" aria-pressed="false" aria-label="暂停动画"><svg viewBox="0 0 20 20" aria-hidden="true"><path id="toggleIcon" d="M7 4v12M13 4v12" stroke-width="2.4"/></svg><span id="toggleText">暂停一下</span></button>
+        <button class="btn" id="resetBtn" type="button" title="快捷键 R"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 7a6.5 6.5 0 1 1-.3 5M4 3v4h4"/></svg>重新开跑</button>
+        <button class="btn cheer" id="cheerBtn" type="button" title="让群臣提醒秦王试着拔剑"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8h4l7-4v12l-7-4H3ZM7 12l1 5H5l-1-5M17 7q2 3 0 6"/></svg>王，负剑！</button>
+      </div>
+      <div class="speed"><label for="speedSlider">追逐速度</label><input id="speedSlider" type="range" min="0.5" max="2.5" step="0.25" value="1" aria-label="追逐速度" aria-valuetext="1 倍速"><output id="speedValue" for="speedSlider">1.00×</output></div>
+    </div>
+  </section>
+  <footer><span><kbd>空格</kbd> 暂停 / 继续 &nbsp; <kbd>R</kbd> 重新开始 &nbsp; · &nbsp; 点击「王，负剑！」触发小彩蛋</span><span class="footer-note">趣味演绎，非史实复原 · 单文件 / 离线可用</span></footer>
+  <noscript><p style="padding:16px;color:#ad4e39">动画需要启用 JavaScript。当前显示为静态 SVG 画面。</p></noscript>
+</main>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const NS = 'http://www.w3.org/2000/svg';
+  const TAU = Math.PI * 2;
+  const OMEGA = 0.72;
+  const CX = 600, CY = 486, RX = 280, RY = 77;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const state = { time: 0, speed: 1, paused: reducedMotion.matches, cheerAt: -Infinity, frame: 0, lastStamp: 0, lap: -1 };
+  const rear = $('rearActors'), front = $('frontActors');
+  const bubble = $('talkBubble'), bubbleText = $('bubbleText');
+  const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+  const fmt = v => v.toFixed(2);
+  const attr = (node, key, value) => node.setAttribute(key, String(value));
+  let currentWords = '';
+
+  function refs(name) {
+    const r = { name, root: $(name), dust: [], position: null };
+    for (const part of ['Facing','Bob','BackArm','BackHand','FrontArm','FrontHand','LegBack','LegFront','BootBack','BootFront','Skirt','Head','Shadow','Label']) r[part] = $(name + part);
+    for (let i = 0; i < 11; i++) {
+      const e = document.createElementNS(NS, 'ellipse');
+      $('dustLayer').appendChild(e);
+      r.dust.push(e);
+    }
+    return r;
+  }
+  const king = refs('king'), assassin = refs('assassin');
+  const cape = $('kingCape'), capeTrim = $('kingCapeTrim'), ribbon = $('assassinRibbon');
+  const sword = $('kingSword'), blade = $('kingBlade'), tassels = $('kingTassels');
+  const sweat = $('kingSweat'), weapon = $('assassinWeapon'), glint = $('daggerGlint');
+  const progress = $('lapProgress'), lapCount = $('lapCount');
+  const crowdCheer = $('crowdCheer');
+
+  function limb(node, hand, sx, sy, ex, ey, hx, hy) {
+    attr(node, 'd', `M${sx} ${sy}Q${fmt(ex)} ${fmt(ey)} ${fmt(hx)} ${fmt(hy)}`);
+    attr(hand, 'cx', fmt(hx));
+    attr(hand, 'cy', fmt(hy));
+  }
+
+  function leg(actor, side, phase) {
+    const hip = side === 'Front' ? 9 : -10;
+    const x = hip + Math.sin(phase) * 25;
+    const y = -5 - Math.max(0, Math.cos(phase)) * 17;
+    const kx = (hip + x) / 2 + 13;
+    const ky = (-47 + y) / 2 - 1;
+    attr(actor['Leg' + side], 'd', `M${hip} -47Q${fmt(kx)} ${fmt(ky)} ${fmt(x)} ${fmt(y)}`);
+    attr(actor['Boot' + side], 'transform', `translate(${fmt(x)} ${fmt(y)}) rotate(${fmt(Math.sin(phase) * 9)})`);
+  }
+
+  function place(actor, theta, phase, time) {
+    const depth = Math.sin(theta);
+    const x = CX + Math.cos(theta) * RX;
+    const y = CY + depth * RY;
+    const scale = (0.9 + depth * 0.11) * (actor === king ? 1.05 : 1);
+    const facing = -Math.sin(theta) >= 0 ? 1 : -1;
+    const squash = 0.86 + 0.14 * Math.abs(Math.sin(theta));
+    const layer = depth < 0 ? rear : front;
+    if (actor.root.parentNode !== layer) layer.appendChild(actor.root);
+    attr(actor.root, 'transform', `translate(${fmt(x)} ${fmt(y)}) scale(${fmt(scale)})`);
+    attr(actor.Facing, 'transform', `scale(${fmt(facing * squash)} 1)`);
+    attr(actor.Bob, 'transform', `translate(0 ${fmt(-Math.abs(Math.sin(phase)) * 3.5)})`);
+    attr(actor.Skirt, 'transform', `rotate(${fmt(Math.sin(phase) * 4)} 0 -78)`);
+    attr(actor.Head, 'transform', `rotate(${fmt(Math.sin(phase + 0.3) * 2)} 0 -124)`);
+    leg(actor, 'Back', phase + Math.PI);
+    leg(actor, 'Front', phase);
+    attr(actor.Shadow, 'cx', fmt(x));
+    attr(actor.Shadow, 'cy', fmt(y + 2));
+    attr(actor.Shadow, 'rx', fmt((29 - Math.abs(Math.sin(phase)) * 3) * scale));
+    attr(actor.Shadow, 'ry', fmt(7.1 * scale));
+    const visibility = depth < 0 ? clamp((Math.abs(x - CX) - 64) / 45, 0, 1) : 1;
+    attr(actor.Label, 'transform', `translate(${fmt(x)} ${fmt(y + 24 * scale)})`);
+    attr(actor.Label, 'opacity', fmt(visibility * 0.95));
+    actor.position = { x, y, scale, facing, depth, visibility };
+    actor.dust.forEach((e, i) => {
+      const age = 0.13 + i * 0.075;
+      const a = theta - age * OMEGA;
+      const fade = (1 - i / actor.dust.length);
+      const puff = 0.6 + 0.4 * Math.sin(time * 13 - i * 1.8);
+      attr(e, 'cx', fmt(CX + Math.cos(a) * RX));
+      attr(e, 'cy', fmt(CY + Math.sin(a) * RY + 3 - i * 0.5));
+      attr(e, 'rx', fmt(2.5 + i * 0.48));
+      attr(e, 'ry', fmt(1.3 + i * 0.21));
+      attr(e, 'opacity', fmt(fade * puff * 0.23));
+    });
+  }
+
+  function poseKing(phase, pull) {
+    const s = Math.sin(phase), c = Math.cos(phase);
+    limb(king.BackArm, king.BackHand, -13, -108, -27 - s * 6, -89, -29 - s * 18, -90 - c * 7);
+    if (pull >= 0) {
+      limb(king.FrontArm, king.FrontHand, 15, -108, 32, -105 - pull * 12, -16 + pull * 5, -102 - pull * 14);
+    } else {
+      limb(king.FrontArm, king.FrontHand, 15, -108, 25 + s * 6, -88, 32 + s * 18, -93 + c * 7);
+    }
+    const tailX = -83 - Math.sin(phase * 0.7) * 10;
+    const tailY = -96 + Math.cos(phase * 0.9) * 8;
+    attr(cape, 'd', `M-15-118C-42-112-52-91 ${fmt(tailX)} ${fmt(tailY)}Q-70-57-26-45L3-83Z`);
+    attr(capeTrim, 'd', `M${fmt(tailX + 5)} ${fmt(tailY + 4)}Q-65-61-28-50`);
+    attr(sword, 'transform', `translate(-26 -78) rotate(${fmt(24 + s * 3)})`);
+    attr(blade, 'transform', `translate(0 ${fmt(pull >= 0 ? -pull * 16 : 0)})`);
+    attr(tassels, 'transform', `rotate(${fmt(s * 8)} 5 -159)`);
+    attr(sweat, 'opacity', fmt(0.55 + 0.4 * Math.sin(phase * 0.48)));
+    attr(sweat, 'transform', `translate(0 ${fmt((1 + c) * 1.4)})`);
+  }
+
+  function poseAssassin(phase) {
+    const s = Math.sin(phase), c = Math.cos(phase);
+    limb(assassin.BackArm, assassin.BackHand, -13, -108, -30 - s * 8, -86, -32 - s * 19, -91 - c * 7);
+    const hx = 48 + s * 7, hy = -98 + c * 6;
+    limb(assassin.FrontArm, assassin.FrontHand, 15, -106, 33, -88 + s * 4, hx, hy);
+    attr(weapon, 'transform', `translate(${fmt(hx)} ${fmt(hy)}) rotate(${fmt(-12 + s * 5)})`);
+    attr(glint, 'opacity', fmt(Math.pow(Math.max(0, Math.sin(phase * 0.23)), 8)));
+    attr(ribbon, 'd', `M-10-145Q-38-135-57 ${fmt(-151 + s * 7)}L-50 ${fmt(-142 + c * 5)}Q-33-127-12-139Z`);
+  }
+
+  function speak(actor, words, opacity) {
+    if (!actor || opacity <= 0) { attr(bubble, 'opacity', 0); return; }
+    const p = actor.position;
+    const x = clamp(p.x + p.facing * 9, 105, 1095);
+    const y = p.y - 177 * p.scale;
+    attr(bubble, 'transform', `translate(${fmt(x)} ${fmt(y)})`);
+    attr(bubble, 'opacity', fmt(opacity * p.visibility));
+    if (words !== currentWords) { bubbleText.textContent = words; currentWords = words; }
+  }
+
+  function render() {
+    const t = state.time;
+    const theta = 0.92 + t * OMEGA;
+    const gap = 1.03 + 0.12 * Math.sin(t * 0.67);
+    const phase = t * 12;
+    place(king, theta, phase, t);
+    place(assassin, theta - gap, phase + 1.8, t);
+    // 同一侧时，脚下位置更靠前的人最后绘制。
+    if (king.root.parentNode === assassin.root.parentNode) {
+      const layer = king.root.parentNode;
+      const near = king.position.y > assassin.position.y ? king.root : assassin.root;
+      if (layer.lastElementChild !== near) layer.appendChild(near);
+    }
+    const cheerTime = t - state.cheerAt;
+    const cheering = cheerTime >= 0 && cheerTime < 2.7;
+    const envelope = cheering ? Math.min(1, cheerTime * 5, (2.7 - cheerTime) * 4) : 0;
+    const pull = cheering ? (0.25 + 0.75 * (0.5 - 0.5 * Math.cos(cheerTime * 13))) * envelope : -1;
+    poseKing(phase, pull);
+    poseAssassin(phase + 1.8);
+    attr(crowdCheer, 'opacity', fmt(envelope));
+    if (cheering) {
+      speak(king, cheerTime < 1.4 ? '等一下，剑卡住了！' : '先绕一圈再说！', envelope);
+    } else {
+      const beat = t % 12;
+      if (beat < 3.1) speak(king, '剑怎么这么长！', Math.min(1, beat * 4, (3.1 - beat) * 4));
+      else if (beat > 4.4 && beat < 7.3) speak(assassin, '你倒是停一下！', Math.min(1, (beat - 4.4) * 4, (7.3 - beat) * 4));
+      else if (beat > 9 && beat < 11.5) speak(king, '这柱子，甚好。', Math.min(1, (beat - 9) * 4, (11.5 - beat) * 4));
+      else speak(null, '', 0);
+    }
+    const completed = t * OMEGA / TAU;
+    const lap = Math.floor(completed) + 1;
+    if (state.lap !== lap) { state.lap = lap; lapCount.textContent = String(lap).padStart(2, '0'); }
+    const circumference = 2 * Math.PI * 14;
+    attr(progress, 'stroke-dasharray', `${fmt((completed % 1) * circumference)} ${fmt(circumference)}`);
+  }
+
+  function tick(stamp) {
+    state.frame = 0;
+    if (state.paused || document.hidden) { state.lastStamp = 0; return; }
+    if (state.lastStamp) state.time += Math.min((stamp - state.lastStamp) / 1000, 0.06) * state.speed;
+    state.lastStamp = stamp;
+    render();
+    state.frame = requestAnimationFrame(tick);
+  }
+
+  function schedule() {
+    if (!state.frame && !state.paused && !document.hidden) state.frame = requestAnimationFrame(tick);
+  }
+
+  function setPaused(paused) {
+    state.paused = paused;
+    if (state.frame) cancelAnimationFrame(state.frame);
+    state.frame = 0;
+    state.lastStamp = 0;
+    $('toggleText').textContent = paused ? '继续开跑' : '暂停一下';
+    $('toggleBtn').setAttribute('aria-label', paused ? '继续动画' : '暂停动画');
+    $('toggleBtn').setAttribute('aria-pressed', String(paused));
+    attr($('toggleIcon'), 'd', paused ? 'M6 3l10 7-10 7Z' : 'M7 4v12M13 4v12');
+    attr($('toggleIcon'), 'fill', paused ? 'currentColor' : 'none');
+    $('statusText').textContent = paused ? '歇口气，稍后再绕' : '追逐进行中';
+    $('live').classList.toggle('is-paused', paused);
+    render();
+    schedule();
+  }
+
+  function reset() {
+    state.time = 0;
+    state.cheerAt = -Infinity;
+    state.lastStamp = 0;
+    state.lap = -1;
+    render();
+  }
+
+  $('toggleBtn').addEventListener('click', () => setPaused(!state.paused));
+  $('resetBtn').addEventListener('click', reset);
+  $('cheerBtn').addEventListener('click', () => {
+    state.cheerAt = state.time;
+    if (state.paused) setPaused(false);
+    else render();
+  });
+  $('speedSlider').addEventListener('input', e => {
+    const n = Number(e.target.value);
+    state.speed = Number.isFinite(n) ? clamp(n, 0.5, 2.5) : 1;
+    $('speedValue').textContent = state.speed.toFixed(2) + '×';
+    $('speedSlider').setAttribute('aria-valuetext', state.speed + ' 倍速');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey || e.metaKey || e.altKey || e.repeat) return;
+    if (e.target.closest('input,button,textarea,select,[contenteditable="true"]')) return;
+    if (e.code === 'Space') { e.preventDefault(); setPaused(!state.paused); }
+    if (e.code === 'KeyR') { e.preventDefault(); reset(); }
+  });
+  document.addEventListener('visibilitychange', () => {
+    state.lastStamp = 0;
+    if (document.hidden && state.frame) { cancelAnimationFrame(state.frame); state.frame = 0; }
+    else schedule();
+  });
+  const onMotionChange = e => { if (e.matches) setPaused(true); };
+  if (reducedMotion.addEventListener) reducedMotion.addEventListener('change', onMotionChange);
+  setPaused(state.paused);
+})();
+</script>
+</body>
+</html>
